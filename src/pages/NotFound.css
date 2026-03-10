@@ -1,0 +1,76 @@
+.notfound-page {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3F4F6;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.notfound-content {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    width: 100%;
+}
+
+.notfound-code {
+    font-family: 'Righteous', sans-serif;
+    font-size: 6.5rem;
+    font-weight: 700;
+    color: #2B3580;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.notfound-line {
+    width: 60px;
+    height: 4px;
+    background: #00A8A8;
+    border-radius: 2px;
+    margin: 0 auto 1.75rem;
+}
+
+.notfound-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.notfound-content p {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.notfound-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.notfound-bg-text {
+    position: absolute;
+    font-family: 'Righteous', sans-serif;
+    font-size: 22rem;
+    font-weight: 900;
+    color: rgba(43, 53, 128, 0.04);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+}
+
+@media (max-width: 480px) {
+    .notfound-code { font-size: 4.5rem; }
+    .notfound-content h1 { font-size: 1.5rem; }
+}

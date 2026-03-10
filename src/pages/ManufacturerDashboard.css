@@ -1,0 +1,565 @@
+/* ── Layout ── */
+.mfr-page {
+    display: flex;
+    min-height: calc(100vh - 64px);
+    background: #F3F4F6;
+}
+
+/* ── Sidebar ── */
+.mfr-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: #1a1a2e;
+    padding: 1.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+}
+
+.mfr-sidebar-brand {
+    padding: 0.25rem 0.5rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mfr-logo-img {
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+.mfr-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+}
+
+.mfr-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.87rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-body);
+    transition: background 0.15s, color 0.15s;
+}
+
+.mfr-nav-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mfr-nav-item.active {
+    background: #00A8A8;
+    color: #fff;
+    font-weight: 600;
+}
+
+.mfr-sidebar-bottom {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mfr-logout {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.mfr-logout:hover {
+    color: #EF4444 !important;
+    background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ── Main ── */
+.mfr-main {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    min-width: 0;
+    overflow-y: auto;
+}
+
+/* ── Header ── */
+.mfr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mfr-header h1 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #111827;
+    font-family: var(--font-body);
+    margin-bottom: 0.2rem;
+}
+
+.mfr-header p {
+    font-size: 0.88rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.mfr-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mfr-notif-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #374151;
+    transition: border-color 0.2s;
+}
+
+.mfr-notif-btn:hover {
+    border-color: #9ca3af;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #EF4444;
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #F3F4F6;
+}
+
+.mfr-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem 1rem 0.5rem 0.65rem;
+    border-radius: 12px;
+}
+
+.mfr-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.mfr-user-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #111827;
+    font-family: var(--font-body);
+}
+
+.mfr-user-role {
+    font-size: 0.72rem;
+    color: #00A8A8;
+    font-weight: 500;
+}
+
+/* ── KPI Cards ── */
+.mfr-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.mfr-kpi-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.mfr-kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.mfr-kpi-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.2rem;
+}
+
+.mfr-kpi-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1;
+    font-family: var(--font-body);
+}
+
+.mfr-kpi-label {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.mfr-kpi-delta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.73rem;
+    color: #10B981;
+    font-weight: 600;
+}
+
+/* ── Sections ── */
+.mfr-section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.mfr-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.mfr-section-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #111827;
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+/* ── Pipeline ── */
+.mfr-pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pipeline-stage-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 100px;
+}
+
+.pipeline-stage {
+    flex: 1;
+    background: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.pipeline-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 0.25rem 0.75rem;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-body);
+}
+
+.pipeline-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+}
+
+.pipeline-bar {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.pipeline-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s;
+}
+
+.pipeline-arrow {
+    color: #d1d5db;
+    flex-shrink: 0;
+}
+
+/* ── Table Controls ── */
+.mfr-table-controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.mfr-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mfr-search-icon {
+    position: absolute;
+    left: 0.75rem;
+    color: #9ca3af;
+}
+
+.mfr-search-input {
+    padding: 0.6rem 0.9rem 0.6rem 2.2rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #111827;
+    outline: none;
+    font-family: var(--font-body);
+    transition: border-color 0.2s;
+    width: 220px;
+}
+
+.mfr-search-input:focus {
+    border-color: #00A8A8;
+}
+
+.mfr-filter-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    color: #6b7280;
+    font-size: 0.85rem;
+    background: #fff;
+}
+
+.mfr-filter-select {
+    border: none;
+    outline: none;
+    font-size: 0.85rem;
+    color: #374151;
+    font-family: var(--font-body);
+    background: transparent;
+    cursor: pointer;
+}
+
+/* ── Orders Table ── */
+.mfr-table-wrap {
+    overflow-x: auto;
+}
+
+.mfr-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.mfr-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: nowrap;
+}
+
+.mfr-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 0.85rem;
+    color: #374151;
+    vertical-align: middle;
+}
+
+.mfr-table tr:last-child td {
+    border-bottom: none;
+}
+
+.mfr-table tr:hover td {
+    background: #fafafa;
+}
+
+.mfr-order-id {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #9ca3af;
+}
+
+.mfr-client {
+    font-weight: 600;
+    color: #111827;
+}
+
+.mfr-product-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 500;
+}
+
+.mfr-product-cell img {
+    width: 38px;
+    height: 38px;
+    border-radius: 7px;
+    object-fit: cover;
+}
+
+.mfr-qty {
+    font-weight: 600;
+    color: #111827;
+}
+
+.mfr-material {
+    font-size: 0.8rem;
+    color: #6b7280;
+}
+
+.mfr-date {
+    color: #6b7280;
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.mfr-amount {
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+}
+
+.mfr-priority-badge,
+.mfr-status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.mfr-row-actions {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.mfr-action-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #6b7280;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.mfr-action-btn:hover {
+    border-color: #2B3580;
+    color: #2B3580;
+}
+
+.mfr-empty {
+    text-align: center;
+    padding: 2.5rem;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* ── Alerts ── */
+.mfr-alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.mfr-alert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: #fafafa;
+    border-radius: 10px;
+    border-left: 3px solid transparent;
+    font-size: 0.87rem;
+    color: #374151;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1200px) {
+    .mfr-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .mfr-sidebar {
+        display: none;
+    }
+
+    .mfr-main {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .mfr-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mfr-table-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mfr-search-input {
+        width: 100%;
+    }
+}
