@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-    User, Settings, ShoppingBag, Heart, Star,
+    User, ShoppingBag, Heart, Star,
     Edit3, MapPin, Mail, Phone, Calendar,
     Layers, Download, Eye, MoreHorizontal, Bell, Shield, LogOut,
 } from 'lucide-react';
