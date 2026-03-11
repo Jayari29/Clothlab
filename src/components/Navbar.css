@@ -1,7 +1,7 @@
 .navbar {
     width: 100%;
     height: 68px;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.88);
     border-bottom: 1px solid #f0f0f0;
     display: flex;
     justify-content: center;
@@ -9,7 +9,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .navbar-scrolled {
@@ -65,16 +67,41 @@
     font-weight: 500;
     color: #374151;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.25s;
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00A8A8, #2B3580);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-link:hover {
     color: #2B3580;
 }
 
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
 .nav-link svg {
     color: #00A8A8;
     flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-link:hover svg {
+    transform: scale(1.2);
 }
 
 .nav-link-active {
@@ -86,12 +113,13 @@
 .nav-link-active::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 2px;
     background: linear-gradient(90deg, #00A8A8, #2B3580);
     border-radius: 2px;
+    transform: scaleX(1);
 }
 
 .navbar-actions {
@@ -119,18 +147,20 @@
 }
 
 .btn-get-started {
-    background-color: #00A8A8;
+    background: linear-gradient(135deg, #00A8A8 0%, #2B3580 100%);
     color: #fff;
     padding: 0.5rem 1.3rem;
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 10px rgba(0,168,168,0.3);
 }
 
 .btn-get-started:hover {
-    background-color: #009090;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,168,168,0.45);
     color: #fff;
 }
 
@@ -145,11 +175,12 @@
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #e5e7eb;
-    transition: border-color 0.2s;
+    transition: border-color 0.25s, transform 0.25s;
 }
 
 .navbar-avatar img:hover {
     border-color: #00A8A8;
+    transform: scale(1.08);
 }
 
 .navbar-avatar {
@@ -186,7 +217,7 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: #fff;
+    background: rgba(255,255,255,0.96);
     border-bottom: 1px solid #f0f0f0;
     padding: 1rem 1.5rem 1.5rem;
     display: flex;
@@ -194,6 +225,8 @@
     gap: 0.2rem;
     z-index: 99;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(12px);
+    animation: fade-in-up 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mobile-nav-link {

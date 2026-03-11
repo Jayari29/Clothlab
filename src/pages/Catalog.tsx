@@ -60,7 +60,10 @@ const Catalog = () => {
                 </div>
                 <div className="catalog-hero-content">
                     <span className="catalog-eyebrow">La bibliothèque des modèles</span>
-                    <h1>Muse précision, qualité,<br />adaptabilité créative.</h1>
+                    <h1 className="split-heading">
+                        <span className="sh-italic">Muse précision, qualité,</span>
+                        <span className="sh-bold-light">adaptabilité créative.</span>
+                    </h1>
                     <p>Choisissez parmi notre sélection de gabarits 3D prêts à personnaliser.</p>
                     <Link to="/editor" className="btn-teal-lg">Commencer →</Link>
                 </div>
@@ -80,7 +83,10 @@ const Catalog = () => {
                 <div className="catalog-section-label">Styles</div>
                 <div className="catalog-cols">
                     <div className="catalog-col-left">
-                        <h2>Filtrer par<br />inspiration.</h2>
+                        <h2 className="split-heading">
+                            <span className="sh-italic">Filtrer par</span>
+                            <span className="sh-bold">inspiration.</span>
+                        </h2>
                         <p>Parcourez les styles et trouvez le gabarit idéal pour votre création.</p>
                         <Link to="/editor" className="btn-outline-sm">Voir tout</Link>
                     </div>
@@ -101,7 +107,10 @@ const Catalog = () => {
             <section className="catalog-section catalog-trending">
                 <div className="catalog-section-label">Tendances</div>
                 <div className="trending-header">
-                    <h2>Modèles en vogue</h2>
+                    <h2 className="split-heading">
+                        <span className="sh-italic">Modèles</span>
+                        <span className="sh-bold">en vogue.</span>
+                    </h2>
                     <span className="trending-count">{filteredItems.length} modèle{filteredItems.length !== 1 ? 's' : ''}</span>
                 </div>
 
@@ -164,7 +173,10 @@ const Catalog = () => {
                 </div>
                 <div className="feature-row-text">
                     <span className="catalog-section-label">Expérience</span>
-                    <h2>Navigation fluide.</h2>
+                    <h2 className="split-heading">
+                        <span className="sh-italic">Navigation</span>
+                        <span className="sh-bold">fluide.</span>
+                    </h2>
                     <p>Parcourez simplement une vaste collection de modèles, d'options et d'inspirations en toute fluidité. Chaque filtre vous rapproche du vêtement parfait.</p>
                     <ul className="feature-bullet-list">
                         <li>✓ Filtres par catégorie, style, genre</li>
@@ -179,7 +191,10 @@ const Catalog = () => {
             <section className="catalog-section catalog-side-grid-row">
                 <div className="side-grid-text">
                     <span className="catalog-section-label">Aperçu 3D</span>
-                    <h2>Aperçu 3D immédiat.</h2>
+                    <h2 className="split-heading">
+                        <span className="sh-italic">Aperçu 3D</span>
+                        <span className="sh-bold">immédiat.</span>
+                    </h2>
                     <p>Chaque modèle peut être visualisé et tourné en 3D avant sélection. Inspectez chaque détail avant de commencer la personnalisation.</p>
                     <Link to="/editor" className="btn-outline-sm">Voir en 3D →</Link>
                 </div>
@@ -197,7 +212,10 @@ const Catalog = () => {
             <section className="catalog-section catalog-feature-row reversed">
                 <div className="feature-row-text">
                     <span className="catalog-section-label">Direct</span>
-                    <h2>Accès direct à l'édition.</h2>
+                    <h2 className="split-heading">
+                        <span className="sh-italic">Accès direct</span>
+                        <span className="sh-bold">à l'édition.</span>
+                    </h2>
                     <p>Lancez la personnalisation du modèle choisi sans fioriture. Un click suffit pour ouvrir le studio et commencer à créer.</p>
                     <Link to="/editor" className="btn-teal-lg">Ouvrir le Studio</Link>
                 </div>
@@ -208,7 +226,10 @@ const Catalog = () => {
 
             {/* ---- CTA ---- */}
             <section className="catalog-cta">
-                <h2>Prêt à explorer ?</h2>
+                <h2 className="split-heading">
+                    <span className="sh-italic">Prêt à explorer ?</span>
+                    <span className="sh-bold-light">Lancez-vous.</span>
+                </h2>
                 <p>Découvrez notre bibliothèque de gabarits et lancez votre première création.</p>
                 <Link to="/editor" className="btn-teal-lg">Explorer maintenant</Link>
             </section>

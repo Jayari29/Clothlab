@@ -56,12 +56,14 @@
     font-size: 0.8rem;
     font-weight: 700;
     text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 
 .footer-social-icon:hover {
     border-color: #00A8A8;
     color: #00A8A8;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,168,168,0.3);
 }
 
 /* Link groups */
@@ -78,6 +80,18 @@
 .footer-links-group a {
     display: block;
     color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.7rem;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.25s, transform 0.25s;
+    position: relative;
+    width: fit-content;
+}
+
+.footer-links-group a:hover {
+    color: #00A8A8;
+    transform: translateX(4px);
+}
     margin-bottom: 0.7rem;
     font-size: 0.88rem;
     text-decoration: none;
@@ -186,7 +200,7 @@
     color: #fff;
     outline: none;
     border-radius: 8px 0 0 8px;
-    transition: border-color 0.2s;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
 }
 
 .footer-newsletter-form input::placeholder {
@@ -195,23 +209,26 @@
 
 .footer-newsletter-form input:focus {
     border-color: #00A8A8;
+    box-shadow: 0 0 0 3px rgba(0,168,168,0.15);
+    background: rgba(255,255,255,0.12);
 }
 
 .footer-newsletter-form button {
     padding: 0.7rem 1.25rem;
-    background: #00A8A8;
+    background: linear-gradient(135deg, #00A8A8, #007ea0);
     color: #fff;
     font-weight: 700;
     font-size: 1rem;
     border: none;
     cursor: pointer;
     border-radius: 0 8px 8px 0;
-    transition: background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
     white-space: nowrap;
 }
 
 .footer-newsletter-form button:hover {
-    background: #008f8f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,168,168,0.4);
 }
 
 .footer-newsletter-thanks {

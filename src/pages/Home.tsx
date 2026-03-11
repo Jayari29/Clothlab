@@ -149,8 +149,9 @@ const Home = () => {
             <section className="hero-section">
                 <div className="hero-left">
                     <div className="hero-badge">✦ AI FASHION GENERATOR V2.0</div>
-                    <h1 className="hero-title">
-                        Design the <span className="italic-accent">Future</span> of Fashion
+                    <h1 className="hero-title split-heading">
+                        <span className="sh-italic">Design the Future</span>
+                        <span className="sh-bold">of Fashion.</span>
                     </h1>
                     <p className="hero-desc">
                         Empowering high-end fashion creators with precision tools for production-ready custom apparel.
@@ -162,7 +163,7 @@ const Home = () => {
                 </div>
                 <div className="hero-right">
                     <div className="hero-model-img-container">
-                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80&fit=crop" alt="Fashion Model" className="hero-model-img" />
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=90&fit=crop" alt="Fashion Model" className="hero-model-img" />
                         <div className="hero-badge-stat">10k+ <span>Active Creators</span></div>
                     </div>
                 </div>
@@ -178,28 +179,33 @@ const Home = () => {
                 ))}
             </section>
 
-            {/* Partners / Trust Bar */}
-            <RevealSection className="partners-bar">
+            {/* Partners / Trust Bar — auto-scrolling marquee */}
+            <div className="partners-bar">
                 <p className="partners-label">Ils nous font confiance</p>
-                <div className="partners-logos">
-                    {PARTNERS.map(p => (
-                        <span key={p.name} className="partner-name">{p.text}</span>
-                    ))}
+                <div className="partners-track-wrapper">
+                    <div className="partners-track">
+                        {[...PARTNERS, ...PARTNERS].map((p, i) => (
+                            <span key={`${p.name}-${i}`} className="partner-name">{p.text}</span>
+                        ))}
+                    </div>
                 </div>
-            </RevealSection>
+            </div>
 
             {/* Feature Cards Section */}
             <RevealSection>
             <section className="features-section">
                 <p className="section-eyebrow">THE ULTIMATE CREATIVE TOOLKIT</p>
-                <h2 className="features-heading">Engineered for Excellence,<br />Crafted for Style.</h2>
+                <h2 className="features-heading split-heading">
+                    <span className="sh-italic">Engineered for Excellence,</span>
+                    <span className="sh-bold">Crafted for Style.</span>
+                </h2>
                 <div className="features-grid">
                     {features.map((f) => (
                         <div key={f.title} className="feature-card">
                             <div className="feature-img" style={{ backgroundColor: f.bg }}>
-                                {f.title === 'Visual Editor' && <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b4571?w=260&q=80&fit=crop" alt="Visual Editor" />}
-                                {f.title === 'Asset Library' && <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=260&q=80&fit=crop" alt="Asset Library" />}
-                                {f.title === 'Seamless Workflow' && <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=260&q=80&fit=crop" alt="Seamless Workflow" />}
+                                {f.title === 'Visual Editor' && <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=90&fit=crop" alt="Visual Editor" />}
+                                {f.title === 'Asset Library' && <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=600&q=90&fit=crop" alt="Asset Library" />}
+                                {f.title === 'Seamless Workflow' && <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=90&fit=crop" alt="Seamless Workflow" />}
                             </div>
                             <div className="feature-card-icon">{f.icon}</div>
                             <h3>{f.title}</h3>
@@ -214,7 +220,10 @@ const Home = () => {
             <RevealSection from="bottom">
             <section className="how-section">
                 <p className="section-eyebrow">PROCESSUS SIMPLE</p>
-                <h2 className="how-heading">De l’idée au vêtement<br />en 3 étapes.</h2>
+                <h2 className="how-heading split-heading">
+                    <span className="sh-italic">De l'idée au vêtement</span>
+                    <span className="sh-bold-light">en 3 étapes.</span>
+                </h2>
                 <div className="how-steps">
                     {HOW_STEPS.map((step, i) => (
                         <div key={step.num} className="how-step">
@@ -233,7 +242,10 @@ const Home = () => {
             <RevealSection>
             <section id="pricing" className="pricing-section">
                 <p className="section-eyebrow">TARIFS</p>
-                <h2 className="pricing-heading">Simple, transparent,<br />sans surprise.</h2>
+                <h2 className="pricing-heading split-heading">
+                    <span className="sh-italic">Simple, transparent,</span>
+                    <span className="sh-bold">sans surprise.</span>
+                </h2>
                 <div className="pricing-grid">
                     {PRICING.map((plan) => (
                         <div key={plan.tier} className={`pricing-card ${plan.highlight ? 'pricing-card-highlight' : ''}`}>
@@ -263,10 +275,13 @@ const Home = () => {
             <RevealSection from="left">
             <section className="quality-section">
                 <div className="quality-img">
-                    <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&q=80&fit=crop" alt="Quality hoodie" />
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=90&fit=crop" alt="Quality textile" />
                 </div>
                 <div className="quality-content">
-                    <h2>Quality that <em>speaks</em> for itself.</h2>
+                    <h2 className="split-heading">
+                        <span className="sh-italic">Quality that speaks</span>
+                        <span className="sh-bold-light">for itself.</span>
+                    </h2>
                     <p>We don't just create looks, we provide access to high-end materials. Every design produced validates the quality, every product is a handmade, production-run material.</p>
                     <ul className="quality-list">
                         <li>✓ Organic Cotton &amp; Technical Fabrics</li>
@@ -282,7 +297,19 @@ const Home = () => {
             <RevealSection>
             <section className="testimonials-section">
                 <p className="section-eyebrow">TÉMOIGNAGES</p>
-                <h2 className="testimonials-heading">Ce que disent<br />nos créateurs.</h2>
+                <h2 className="testimonials-heading">
+                    <span className="th-line-accent">Ce que disent</span>
+                    <span className="th-line-main">nos créateurs.</span>
+                </h2>
+
+                {/* Textile image strip */}
+                <div className="testimonials-textile-strip">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                </div>
                 <div className="testimonials-grid">
                     {TESTIMONIALS.map((t) => (
                         <div key={t.name} className="testimonial-card">
@@ -307,7 +334,10 @@ const Home = () => {
 
             {/* CTA Banner */}
             <section className="cta-banner">
-                <h2>Ready to transform your design workflow?</h2>
+                <h2 className="split-heading">
+                    <span className="sh-italic">Ready to transform</span>
+                    <span className="sh-bold-light">your design workflow?</span>
+                </h2>
                 <p>Join the next generation of fashion creators. Build your brand, design your collections, and scale your business with ClothLab.</p>
                 <div className="cta-actions">
                     <Link to="/editor" className="btn-teal">Start Your Free Trial</Link>
