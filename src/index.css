@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Righteous&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   --color-primary: #2B3580;
@@ -15,6 +15,7 @@
   
   --font-heading: 'Righteous', 'Outfit', sans-serif;
   --font-body: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -275,10 +276,10 @@ img, video {
 .sh-italic {
     display: block;
     font-style: italic;
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: var(--font-serif);
     font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 1.15;
+    line-height: 1.18;
     background: linear-gradient(135deg, #00A8A8 0%, #2B3580 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -337,4 +338,44 @@ img, video {
         transform: none;
         transition: none;
     }
+}
+
+/* ============================================
+   PARTNERS BAR
+   ============================================ */
+
+.partners-bar {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: #fafafa;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 5rem;
+    overflow: hidden;
+}
+
+.partners-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c0c7d0;
+    margin-bottom: 1.25rem;
+}
+
+.partner-name {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #c9cdd6;
+    text-transform: uppercase;
+    padding: 0 1.5rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.partner-name:hover {
+    color: #6b7280;
 }

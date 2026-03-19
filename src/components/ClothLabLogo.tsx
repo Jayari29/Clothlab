@@ -4,7 +4,7 @@ interface LogoProps {
 }
 
 /**
- * ClothLab Logo â€” faithful SVG recreation of the hexagonal LC monogram.
+ * ClothLab Logo âdt” faithful SVG recreation of the hexagonal LC monogram.
  * The mark is composed of:
  *  - An outer hexagonal "C" frame (5 sides, right side open) in teal
  *  - An inner "L" shape in teal sitting at bottom-left inside the C
@@ -16,7 +16,7 @@ const ClothLabLogo = ({ variant = 'light', height = 36 }: LogoProps) => {
 
     return (
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-            {/* â”€â”€ Hexagonal LC Mark â”€â”€ */}
+            {/* â”dtâ”dt Hexagonal LC Mark â”dtâ”dt */}
             <svg
                 width={markWidth}
                 height={height}
@@ -47,7 +47,7 @@ const ClothLabLogo = ({ variant = 'light', height = 36 }: LogoProps) => {
                 />
 
                 {/*
-         * Inner L shape â€” sits flush to the bottom-left inside the C.
+         * Inner L shape âdt” sits flush to the bottom-left inside the C.
          * Vertical bar goes from near top to ~60% height.
          * Horizontal bar extends right from bottom of vertical.
          * Coordinates are calibrated so the L is visually centred
@@ -62,7 +62,7 @@ const ClothLabLogo = ({ variant = 'light', height = 36 }: LogoProps) => {
                 />
             </svg>
 
-            {/* â”€â”€ Clothlab wordmark â”€â”€ */}
+            {/* â”dtâ”dt Clothlab wordmark â”dtâ”dt */}
             <span
                 style={{
                     fontFamily: "'Outfit', 'Nunito', 'Righteous', sans-serif",

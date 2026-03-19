@@ -122,12 +122,21 @@
     align-items: center;
 }
 
-.consumer-header h1 {
+.consumer-header h1,
+.consumer-welcome-heading {
     font-size: 1.55rem;
-    font-weight: 700;
-    color: #111827;
-    font-family: var(--font-body);
+    line-height: 1.2;
     margin-bottom: 0.2rem;
+}
+
+.consumer-welcome-heading .sh-italic {
+    font-size: 1.3rem;
+    line-height: 1.1;
+}
+
+.consumer-welcome-heading .sh-bold {
+    font-size: 1.55rem;
+    line-height: 1.2;
 }
 
 .consumer-header p {

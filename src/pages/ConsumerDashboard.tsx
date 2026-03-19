@@ -8,9 +8,9 @@ import {
 import './ConsumerDashboard.css';
 
 const RECENT_DESIGNS = [
-    { id: 1, name: 'Urban Hoodie', status: 'Publié', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=300&q=80&fit=crop' },
-    { id: 2, name: 'Tee Oversize', status: 'Brouillon', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&q=80&fit=crop' },
-    { id: 3, name: 'Bomber Black', status: 'Publié', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=300&q=80&fit=crop' },
+    { id: 1, name: 'Urban Hoodie', status: 'Publié', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=90&fit=crop' },
+    { id: 2, name: 'Tee Oversize', status: 'Brouillon', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=90&fit=crop' },
+    { id: 3, name: 'Bomber Black', status: 'Publié', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&q=90&fit=crop' },
 ];
 
 const RECENT_ORDERS = [
@@ -74,7 +74,10 @@ const ConsumerDashboard = () => {
             <div className="consumer-main">
                 <div className="consumer-header">
                     <div>
-                        <h1>Bonjour, Mahdi 👋</h1>
+                        <h1 className="split-heading consumer-welcome-heading">
+                            <span className="sh-italic">Bonjour,</span>
+                            <span className="sh-bold">Mahdi 👋</span>
+                        </h1>
                         <p>Voici un aperçu de votre activité sur ClothLab.</p>
                     </div>
                     <Link to="/editor" className="btn-new-design-dash">
@@ -82,7 +85,7 @@ const ConsumerDashboard = () => {
                     </Link>
                 </div>
 
-                {/* ── OVERVIEW ── */}
+                {/* �dt�dt OVERVIEW �dt�dt */}
                 {activeSection === 'overview' && (<>
                 {/* Stats */}
                 <div className="consumer-stats">
@@ -222,7 +225,7 @@ const ConsumerDashboard = () => {
                 </section>
                 </>)}
 
-                {/* ── MES CRÉATIONS ── */}
+                {/* �dt�dt MES CRÉATIONS �dt�dt */}
                 {activeSection === 'designs' && (
                     <section className="consumer-section">
                         <div className="section-header">
@@ -251,7 +254,7 @@ const ConsumerDashboard = () => {
                     </section>
                 )}
 
-                {/* ── COMMANDES ── */}
+                {/* �dt�dt COMMANDES �dt�dt */}
                 {activeSection === 'orders' && (
                     <section className="consumer-section">
                         <div className="section-header">
@@ -297,7 +300,7 @@ const ConsumerDashboard = () => {
                     </section>
                 )}
 
-                {/* ── FAVORIS ── */}
+                {/* �dt�dt FAVORIS �dt�dt */}
                 {activeSection === 'wishlist' && (
                     <section className="consumer-section">
                         <div className="section-header">
@@ -321,7 +324,7 @@ const ConsumerDashboard = () => {
                     </section>
                 )}
 
-                {/* ── NOTIFICATIONS ── */}
+                {/* �dt�dt NOTIFICATIONS �dt�dt */}
                 {activeSection === 'notifications' && (
                     <section className="consumer-section">
                         <div className="section-header">
@@ -330,7 +333,7 @@ const ConsumerDashboard = () => {
                         <div className="notifications-list">
                             {[
                                 { icon: '📦', title: 'Commande #CL-2891 livrée', desc: 'Votre Hoodie Minimaliste a été livré avec succès.', time: 'Il y a 2h', read: false },
-                                { icon: '🚀', title: 'Commande #CL-2745 expédiée', desc: 'Votre Tee Oversize Blanc est en route.', time: 'Il y a 1 jour', read: false },
+                                { icon: '�dt', title: 'Commande #CL-2745 expédiée', desc: 'Votre Tee Oversize Blanc est en route.', time: 'Il y a 1 jour', read: false },
                                 { icon: '✨', title: 'Nouveaux modèles disponibles', desc: 'Découvrez notre nouvelle collection Spring 2026.', time: 'Il y a 2 jours', read: true },
                                 { icon: '💬', title: 'Avis laissé', desc: "Merci d'avoir partagé votre expérience.", time: 'Il y a 3 jours', read: true },
                                 { icon: '🎁', title: 'Offre exclusive Créateur Premium', desc: '-15% sur votre prochaine commande. Code: PREMIUM15', time: 'Il y a 5 jours', read: true },

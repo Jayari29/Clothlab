@@ -16,10 +16,10 @@ const Auth = () => {
 
     return (
         <div className="auth-page">
-            {/* Left â€” fashion image */}
+            {/* Left âdt” fashion image */}
             <div className="auth-left">
                 <img
-                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
+                    src="/catalog_hero.png"
                     alt="ClothLab Fashion"
                 />
                 <div className="auth-left-overlay">
@@ -28,7 +28,7 @@ const Auth = () => {
                     </Link>
                     <div className="auth-quote">
                         <p>"Design the future of fashion,<br />one stitch at a time."</p>
-                        <cite>â€” ClothLab Studio</cite>
+                        <cite>âdt” ClothLab Studio</cite>
                     </div>
                     <div className="auth-stats-row">
                         {[
@@ -45,11 +45,15 @@ const Auth = () => {
                 </div>
             </div>
 
-            {/* Right â€” form */}
+            {/* Right âdt” form */}
             <div className="auth-right">
                 <div className="auth-form-wrap">
                     <div className="auth-form-header">
-                        <h1>{mode === 'login' ? 'Bienvenue' : 'CrÃ©er un compte'}</h1>
+                        <h1 className="split-heading auth-split-heading">
+                            {mode === 'login'
+                                ? <><span className="sh-italic">Bienvenue</span><span className="sh-bold">sur ClothLab.</span></>
+                                : <><span className="sh-italic">Rejoignez</span><span className="sh-bold">la rÃ©volution.</span></>}
+                        </h1>
                         <p>
                             {mode === 'login'
                                 ? 'Connectez-vous Ã  votre espace ClothLab.'
@@ -97,7 +101,7 @@ const Auth = () => {
                             <div className="auth-input-wrap">
                                 <input
                                     type={showPass ? 'text' : 'password'}
-                                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                                    placeholder="âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢"
                                     required
                                 />
                                 <button

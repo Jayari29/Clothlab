@@ -89,7 +89,10 @@ const ManufacturerDashboard = () => {
                 {/* Header */}
                 <header className="mfr-header">
                     <div>
-                        <h1>Portail Fabricant</h1>
+                        <h1 className="split-heading mfr-welcome-heading">
+                            <span className="sh-italic">Portail</span>
+                            <span className="sh-bold">Fabricant.</span>
+                        </h1>
                         <p>GÃ©rez vos commandes, suivez la production et expÃ©diez avec prÃ©cision.</p>
                     </div>
                     <div className="mfr-header-actions">
@@ -166,7 +169,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 </>)}
 
-                {/* â”€â”€ ORDERS â”€â”€ */}
+                {/* â”dtâ”dt ORDERS â”dtâ”dt */}
                 {activeNav === 'orders' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -210,7 +213,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* â”€â”€ PRODUCTION â”€â”€ */}
+                {/* â”dtâ”dt PRODUCTION â”dtâ”dt */}
                 {activeNav === 'production' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -249,7 +252,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* â”€â”€ SHIPPING â”€â”€ */}
+                {/* â”dtâ”dt SHIPPING â”dtâ”dt */}
                 {activeNav === 'shipping' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -275,7 +278,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* â”€â”€ CLIENTS â”€â”€ */}
+                {/* â”dtâ”dt CLIENTS â”dtâ”dt */}
                 {activeNav === 'clients' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -300,7 +303,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* â”€â”€ FINANCES â”€â”€ */}
+                {/* â”dtâ”dt FINANCES â”dtâ”dt */}
                 {activeNav === 'finances' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -323,16 +326,16 @@ const ManufacturerDashboard = () => {
                         </div>
                         <div className="mfr-alert-item" style={{ marginTop: '1.5rem', borderLeftColor: '#10B981' }}>
                             <span style={{ color: '#10B981' }}>ðŸŸ¢</span>
-                            <span>Paiement reÃ§u pour commande #CL-2810 â€” â‚¬3 160</span>
+                            <span>Paiement reÃ§u pour commande #CL-2810 âdt” â‚¬3 160</span>
                         </div>
                         <div className="mfr-alert-item" style={{ borderLeftColor: '#F59E0B' }}>
                             <span style={{ color: '#F59E0B' }}>ðŸŸ¡</span>
-                            <span>Facture #CL-2989 en attente de rÃ¨glement â€” â‚¬2 970</span>
+                            <span>Facture #CL-2989 en attente de rÃ¨glement âdt” â‚¬2 970</span>
                         </div>
                     </section>
                 )}
 
-                {/* â”€â”€ SETTINGS â”€â”€ */}
+                {/* â”dtâ”dt SETTINGS â”dtâ”dt */}
                 {activeNav === 'settings' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">

@@ -353,6 +353,16 @@
     color: #111827;
     margin-bottom: 0.75rem;
 }
+.confirm-split-heading {
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+.confirm-split-heading .sh-italic {
+    font-size: 1.6rem;
+}
+.confirm-split-heading .sh-bold {
+    font-size: 1.8rem;
+}
 .confirm-sub {
     color: #6b7280;
     font-size: 0.95rem;

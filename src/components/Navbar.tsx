@@ -67,7 +67,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Hamburger â€” mobile only */}
+        {/* Hamburger âdt” mobile only */}
         <button
           className="navbar-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}

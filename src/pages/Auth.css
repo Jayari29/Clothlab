@@ -50,10 +50,11 @@
 
 .auth-quote p {
     font-size: 1.55rem;
-    font-weight: 700;
+    font-weight: 400;
     color: #fff;
     line-height: 1.4;
-    font-family: var(--font-body);
+    font-family: var(--font-serif);
+    font-style: italic;
     margin: 0;
 }
 
@@ -108,12 +109,18 @@
     animation: fade-in-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.auth-form-header h1 {
+.auth-form-header .split-heading {
     font-size: 1.8rem;
-    font-weight: 700;
-    color: #111827;
-    font-family: var(--font-body);
+    line-height: 1.25;
     margin-bottom: 0.3rem;
+}
+
+.auth-form-header .sh-italic {
+    font-size: 1.8rem;
+}
+
+.auth-form-header .sh-bold {
+    font-size: 1.8rem;
 }
 
 .auth-form-header p {

@@ -10,22 +10,22 @@ import './Profile.css';
 const TABS = ['Mes CrÃ©ations', 'Commandes', 'Favoris', 'ParamÃ¨tres'];
 
 const MY_DESIGNS = [
-    { id: 1, name: 'Hoodie Minimaliste', date: '02 Mars 2026', status: 'PubliÃ©', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=300&q=80&fit=crop', color: '#3B82F6' },
-    { id: 2, name: 'Tee Oversize Blanc', date: '28 FÃ©v 2026', status: 'Brouillon', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&q=80&fit=crop', color: '#F6F8F8' },
-    { id: 3, name: 'Bomber Urban', date: '20 FÃ©v 2026', status: 'PubliÃ©', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=300&q=80&fit=crop', color: '#111' },
-    { id: 4, name: 'Cargo Street', date: '14 FÃ©v 2026', status: 'En rÃ©vision', img: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=300&q=80&fit=crop', color: '#10B981' },
+    { id: 1, name: 'Hoodie Minimaliste', date: '02 Mars 2026', status: 'PubliÃ©', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=90&fit=crop', color: '#3B82F6' },
+    { id: 2, name: 'Tee Oversize Blanc', date: '28 FÃ©v 2026', status: 'Brouillon', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=90&fit=crop', color: '#F6F8F8' },
+    { id: 3, name: 'Bomber Urban', date: '20 FÃ©v 2026', status: 'PubliÃ©', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&q=90&fit=crop', color: '#111' },
+    { id: 4, name: 'Cargo Street', date: '14 FÃ©v 2026', status: 'En rÃ©vision', img: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&q=90&fit=crop', color: '#10B981' },
 ];
 
 const ORDERS = [
-    { id: '#CL-2891', product: 'Hoodie Minimaliste', date: '05 Mars 2026', status: 'LivrÃ©', amount: 'â‚¬59', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=80&q=80&fit=crop' },
-    { id: '#CL-2745', product: 'Tee Oversize Blanc', date: '25 FÃ©v 2026', status: 'En transit', amount: 'â‚¬29', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=80&q=80&fit=crop' },
-    { id: '#CL-2612', product: 'Bomber Urban', date: '18 FÃ©v 2026', status: 'LivrÃ©', amount: 'â‚¬99', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=80&q=80&fit=crop' },
+    { id: '#CL-2891', product: 'Hoodie Minimaliste', date: '05 Mars 2026', status: 'LivrÃ©', amount: 'â‚¬59', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=100&q=90&fit=crop' },
+    { id: '#CL-2745', product: 'Tee Oversize Blanc', date: '25 FÃ©v 2026', status: 'En transit', amount: 'â‚¬29', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=100&q=90&fit=crop' },
+    { id: '#CL-2612', product: 'Bomber Urban', date: '18 FÃ©v 2026', status: 'LivrÃ©', amount: 'â‚¬99', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=100&q=90&fit=crop' },
 ];
 
 const FAVORITES = [
-    { name: 'Hoodie Earth Tone', img: 'https://images.unsplash.com/photo-1574634534894-89d7576c8259?w=280&q=80&fit=crop', price: 'â‚¬65' },
-    { name: 'Veste Oversized', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=280&q=80&fit=crop', price: 'â‚¬89' },
-    { name: 'T-shirt Graphique', img: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=280&q=80&fit=crop', price: 'â‚¬35' },
+    { name: 'Hoodie Earth Tone', img: 'https://images.unsplash.com/photo-1574634534894-89d7576c8259?w=400&q=90&fit=crop', price: 'â‚¬65' },
+    { name: 'Veste Oversized', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&q=90&fit=crop', price: 'â‚¬89' },
+    { name: 'T-shirt Graphique', img: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=400&q=90&fit=crop', price: 'â‚¬35' },
 ];
 
 const statusColor: Record<string, string> = {
@@ -41,9 +41,9 @@ const Profile = () => {
 
     return (
         <div className="profile-page">
-            {/* â”€â”€ Hero Banner â”€â”€ */}
+            {/* â”dtâ”dt Hero Banner â”dtâ”dt */}
             <div className="profile-banner">
-                <div className="profile-banner-img" />
+                <div className="profile-banner-img" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=90&fit=crop)' }} />
                 <div className="profile-avatar-wrap">
                     <img
                         className="profile-avatar"
@@ -57,10 +57,13 @@ const Profile = () => {
             </div>
 
             <div className="profile-container">
-                {/* â”€â”€ Identity â”€â”€ */}
+                {/* â”dtâ”dt Identity â”dtâ”dt */}
                 <div className="profile-identity">
                     <div className="profile-identity-info">
-                        <h1>Mahdi Benali</h1>
+                        <h1 className="split-heading profile-name-heading">
+                            <span className="sh-italic">Mahdi</span>
+                            <span className="sh-bold">Benali.</span>
+                        </h1>
                         <span className="profile-role"><Star size={13} /> CrÃ©ateur Premium</span>
                         <div className="profile-meta-row">
                             <span><MapPin size={13} /> Alger, AlgÃ©rie</span>
@@ -78,7 +81,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* â”€â”€ Stats â”€â”€ */}
+                {/* â”dtâ”dt Stats â”dtâ”dt */}
                 <div className="profile-stats">
                     {[
                         { label: 'CrÃ©ations', value: '24', icon: <Layers size={18} /> },
@@ -94,7 +97,7 @@ const Profile = () => {
                     ))}
                 </div>
 
-                {/* â”€â”€ Tabs â”€â”€ */}
+                {/* â”dtâ”dt Tabs â”dtâ”dt */}
                 <div className="profile-tabs">
                     {TABS.map(tab => (
                         <button
@@ -107,7 +110,7 @@ const Profile = () => {
                     ))}
                 </div>
 
-                {/* â”€â”€ Tab Content â”€â”€ */}
+                {/* â”dtâ”dt Tab Content â”dtâ”dt */}
                 <div className="profile-content">
 
                     {/* MES CRÃ‰ATIONS */}
@@ -264,11 +267,11 @@ const Profile = () => {
                                 </div>
                                 <div className="settings-field">
                                     <label>Mot de passe actuel</label>
-                                    <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" />
+                                    <input type="password" placeholder="âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢" />
                                 </div>
                                 <div className="settings-field">
                                     <label>Nouveau mot de passe</label>
-                                    <input type="password" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" />
+                                    <input type="password" placeholder="âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢" />
                                 </div>
                                 <button className="settings-save-btn">Mettre Ã  jour</button>
                             </div>

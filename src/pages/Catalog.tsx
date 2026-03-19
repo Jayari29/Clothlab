@@ -3,33 +3,33 @@ import { Link } from 'react-router-dom';
 import './Catalog.css';
 
 const heroImages = [
-    { label: 'New In', src: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=200&q=80&fit=crop' },
-    { label: 'Hoodies', src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=200&q=80&fit=crop' },
-    { label: 'T-Shirts', src: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=200&q=80&fit=crop' },
-    { label: 'Trousers', src: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=200&q=80&fit=crop' },
+    { label: 'New In', src: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=300&q=90&fit=crop' },
+    { label: 'Hoodies', src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=300&q=90&fit=crop' },
+    { label: 'T-Shirts', src: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=300&q=90&fit=crop' },
+    { label: 'Trousers', src: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&q=90&fit=crop' },
 ];
 
 const featureCards = [
-    { label: 'Minimalist', src: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&q=80&fit=crop' },
-    { label: 'Street Wear', src: 'https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=300&q=80&fit=crop' },
-    { label: 'Tailored', src: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=300&q=80&fit=crop' },
+    { label: 'Minimalist', src: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=90&fit=crop' },
+    { label: 'Street Wear', src: 'https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=400&q=90&fit=crop' },
+    { label: 'Tailored', src: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=90&fit=crop' },
 ];
 
 const trendingItems = [
-    { name: 'Oversized Hoodie',  price: '€59',  src: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=280&q=80&fit=crop',  tag: 'Best Seller', category: 'Hoodies'      },
-    { name: 'Zip Hoodie',        price: '€65',  src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=280&q=80&fit=crop',  tag: 'New',         category: 'Hoodies'      },
-    { name: 'Hoodie Fleece',     price: '€55',  src: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=280&q=80&fit=crop',  tag: 'Confort',     category: 'Hoodies'      },
-    { name: 'Classic White Tee', price: '€29',  src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=280&q=80&fit=crop',  tag: 'New',         category: 'T-Shirts'     },
-    { name: 'Crop Top',          price: '€34',  src: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=280&q=80&fit=crop',  tag: 'Trending',    category: 'T-Shirts'     },
-    { name: 'Polo Sport',        price: '€45',  src: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=280&q=80&fit=crop',  tag: 'Sport',       category: 'T-Shirts'     },
-    { name: 'Cargo Pants',       price: '€79',  src: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=280&q=80&fit=crop',  tag: 'Trending',    category: 'Pantalons'    },
-    { name: 'Jean Slim',         price: '€69',  src: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=280&q=80&fit=crop',  tag: 'Classic',     category: 'Pantalons'    },
-    { name: 'Jogging Cargo',     price: '€59',  src: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=280&q=80&fit=crop',  tag: 'Street',      category: 'Pantalons'    },
-    { name: 'Bomber Jacket',     price: '€99',  src: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=280&q=80&fit=crop',  tag: 'Limited',     category: 'Vestes'       },
-    { name: 'Windbreaker',       price: '€89',  src: 'https://images.unsplash.com/photo-1542219550-37153d387c27?w=280&q=80&fit=crop',  tag: 'New',         category: 'Vestes'       },
-    { name: 'Casquette 5-panel', price: '€25',  src: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=280&q=80&fit=crop',  tag: 'Best Seller', category: 'Accessoires'  },
-    { name: 'Tote Bag',          price: '€19',  src: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=280&q=80&fit=crop',  tag: 'Eco',         category: 'Accessoires'  },
-    { name: 'Beanie',            price: '€22',  src: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=280&q=80&fit=crop',  tag: 'Hiver',       category: 'Accessoires'  },
+    { name: 'Oversized Hoodie',  price: '€59',  src: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=90&fit=crop',  tag: 'Best Seller', category: 'Hoodies'      },
+    { name: 'Zip Hoodie',        price: '€65',  src: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&q=90&fit=crop',  tag: 'New',         category: 'Hoodies'      },
+    { name: 'Hoodie Fleece',     price: '€55',  src: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&q=90&fit=crop',  tag: 'Confort',     category: 'Hoodies'      },
+    { name: 'Classic White Tee', price: '€29',  src: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=90&fit=crop',  tag: 'New',         category: 'T-Shirts'     },
+    { name: 'Crop Top',          price: '€34',  src: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=400&q=90&fit=crop',  tag: 'Trending',    category: 'T-Shirts'     },
+    { name: 'Polo Sport',        price: '€45',  src: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?w=400&q=90&fit=crop',  tag: 'Sport',       category: 'T-Shirts'     },
+    { name: 'Cargo Pants',       price: '€79',  src: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&q=90&fit=crop',  tag: 'Trending',    category: 'Pantalons'    },
+    { name: 'Jean Slim',         price: '€69',  src: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&q=90&fit=crop',  tag: 'Classic',     category: 'Pantalons'    },
+    { name: 'Jogging Cargo',     price: '€59',  src: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&q=90&fit=crop',  tag: 'Street',      category: 'Pantalons'    },
+    { name: 'Bomber Jacket',     price: '€99',  src: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&q=90&fit=crop',  tag: 'Limited',     category: 'Vestes'       },
+    { name: 'Windbreaker',       price: '€89',  src: 'https://images.unsplash.com/photo-1542219550-37153d387c27?w=400&q=90&fit=crop',  tag: 'New',         category: 'Vestes'       },
+    { name: 'Casquette 5-panel', price: '€25',  src: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&q=90&fit=crop',  tag: 'Best Seller', category: 'Accessoires'  },
+    { name: 'Tote Bag',          price: '€19',  src: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=400&q=90&fit=crop',  tag: 'Eco',         category: 'Accessoires'  },
+    { name: 'Beanie',            price: '€22',  src: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=90&fit=crop',  tag: 'Hiver',       category: 'Accessoires'  },
 ];
 
 const FILTER_CATS = ['Tout', 'Hoodies', 'T-Shirts', 'Pantalons', 'Vestes', 'Accessoires'];
@@ -55,7 +55,7 @@ const Catalog = () => {
         <div className="catalog-page">
             <section className="catalog-hero">
                 <div className="catalog-hero-bg">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&fit=crop" alt="hero fashion" />
+                    <img src="/catalog_hero.png" alt="hero fashion" />
                     <div className="catalog-hero-overlay" />
                 </div>
                 <div className="catalog-hero-content">

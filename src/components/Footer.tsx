@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Twitter, Instagram, Linkedin } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -21,11 +22,11 @@ const Footer = () => {
                     <Link to="/" className="footer-logo-link">
                         <img src="/SVG/Asset 2.svg" alt="ClothLab" className="footer-logo-img" />
                     </Link>
-                    <p>Transforming clothing creation into a simple, immersive and accessible 3D experience.</p>
+                    <p>Transformez la création de mode en une expérience 3D simple, immersive et accessible.</p>
                     <div className="footer-socials">
-                        <a href="#" aria-label="Twitter" className="footer-social-icon">𝕏</a>
-                        <a href="#" aria-label="Instagram" className="footer-social-icon">&#9679;</a>
-                        <a href="#" aria-label="LinkedIn" className="footer-social-icon">in</a>
+                        <a href="#" aria-label="Twitter" className="footer-social-icon"><Twitter size={15} /></a>
+                        <a href="#" aria-label="Instagram" className="footer-social-icon"><Instagram size={15} /></a>
+                        <a href="#" aria-label="LinkedIn" className="footer-social-icon"><Linkedin size={15} /></a>
                     </div>
                 </div>
                 <div className="footer-links-group">
@@ -37,7 +38,7 @@ const Footer = () => {
                 </div>
                 <div className="footer-links-group">
                     <h4>Entreprise</h4>
-                    <a href="#">À propos</a>
+                    <a href="#">�dt propos</a>
                     <a href="#">Contact</a>
                     <a href="#">Conditions d'utilisation</a>
                     <a href="#">Politique de confidentialité</a>
@@ -53,7 +54,10 @@ const Footer = () => {
             {/* Newsletter */}
             <div className="footer-newsletter">
                 <div className="footer-newsletter-text">
-                    <h4>Restez informé</h4>
+                    <h4 className="split-heading footer-split-heading">
+                        <span className="sh-italic">Restez</span>
+                        <span className="sh-bold">informé.</span>
+                    </h4>
                     <p>Nouveaux modèles, drops exclusifs et mises à jour.</p>
                 </div>
                 {sent ? (

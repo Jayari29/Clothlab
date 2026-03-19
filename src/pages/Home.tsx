@@ -19,14 +19,14 @@ const HOW_STEPS = [
     {
         num: '02',
         title: 'Personnalisez librement',
-        desc: 'Couleur, matière, taille, décals, coupe… chaque détail est ajustable en temps réel.',
+        desc: 'Couleur, matière, taille, décals, coupe�dt� chaque détail est ajustable en temps réel.',
         icon: '🎨',
     },
     {
         num: '03',
         title: 'Commandez en production',
         desc: 'Envoyez directement à un fabricant partenaire et recevez votre création livrée en 24h.',
-        icon: '🚀',
+        icon: '�dt',
     },
 ];
 
@@ -76,7 +76,7 @@ const PRICING = [
             'Onboarding personnalisé',
             'SLA garanti',
         ],
-        cta: 'Contacter l’équipe',
+        cta: 'Contacter l�dt�équipe',
         ctaPath: '/auth',
     },
 ];
@@ -95,28 +95,28 @@ const TESTIMONIALS = [
         name: 'Sofia R.',
         role: 'Creative Director, Maison Sélène',
         avatar: 'https://i.pravatar.cc/64?img=47',
-        quote: '« ClothLab a complètement transformé notre processus. L’éditeur 3D est intuitif et les rendus sont époustouflants. »',
+        quote: '« ClothLab a complètement transformé notre processus. L�dt�éditeur 3D est intuitif et les rendus sont époustouflants. »',
         stars: 5,
     },
     {
         name: 'Karim B.',
         role: 'Fondateur, Urbàn Studio',
         avatar: 'https://i.pravatar.cc/64?img=12',
-        quote: '« En 48h, j’avais mes premiers prototypes entre les mains. La qualité de production est au rendez-vous. »',
+        quote: '« En 48h, j�dt�avais mes premiers prototypes entre les mains. La qualité de production est au rendez-vous. »',
         stars: 5,
     },
     {
         name: 'Léa M.',
         role: 'Styliste indépendante',
         avatar: 'https://i.pravatar.cc/64?img=32',
-        quote: '« La bibliothèque de décals et les options sur-mesure m’ont permis de proposer des pièces vraiment uniques. »',
+        quote: '« La bibliothèque de décals et les options sur-mesure m�dt�ont permis de proposer des pièces vraiment uniques. »',
         stars: 5,
     },
     {
         name: 'Nassim T.',
         role: 'Manager, CollectiveDrop',
         avatar: 'https://i.pravatar.cc/64?img=68',
-        quote: '« On gère des drops de 500 pièces par mois via ClothLab. Le tableau de bord fabricant est exactement ce qu’il nous fallait. »',
+        quote: '« On gère des drops de 500 pièces par mois via ClothLab. Le tableau de bord fabricant est exactement ce qu�dt�il nous fallait. »',
         stars: 5,
     },
 ];
@@ -124,20 +124,20 @@ const TESTIMONIALS = [
 const features = [
     {
         icon: '🎨',
-        title: 'Visual Editor',
-        description: 'A real-time 3D editor designed for premium garment creation. Fine-tune every detail, from texture to typography.',
+        title: 'Éditeur Visuel',
+        description: 'Un éditeur 3D en temps réel pour la création de vêtements haut de gamme. Affinez chaque détail, de la texture à la typographie.',
         bg: '#F9E8E8',
     },
     {
         icon: '📦',
-        title: 'Asset Library',
-        description: 'Curated Brand-quality mockups, patterns and printable graphics to build professional design proposals.',
+        title: 'Bibliothèque d\'Assets',
+        description: 'Mockups, motifs et graphiques imprimables de qualité professionnelle pour construire des propositions de design premium.',
         bg: '#8B7355',
     },
     {
         icon: '⚡',
-        title: 'Seamless Workflow',
-        description: 'Custom Garment tool connects production directly. From file to finished garment, every step runs without friction.',
+        title: 'Workflow Intégré',
+        description: 'L\'outil sur-mesure connecte la production directement. Du fichier au vêtement fini, chaque étape s\'enchaîne sans friction.',
         bg: '#2D4A3E',
     },
 ];
@@ -163,7 +163,7 @@ const Home = () => {
                 </div>
                 <div className="hero-right">
                     <div className="hero-model-img-container">
-                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=90&fit=crop" alt="Fashion Model" className="hero-model-img" />
+                        <img src="/hero_model.png" alt="Fashion Model" className="hero-model-img" />
                         <div className="hero-badge-stat">10k+ <span>Active Creators</span></div>
                     </div>
                 </div>
@@ -179,7 +179,7 @@ const Home = () => {
                 ))}
             </section>
 
-            {/* Partners / Trust Bar — auto-scrolling marquee */}
+            {/* Partners / Trust Bar �dt� auto-scrolling marquee */}
             <div className="partners-bar">
                 <p className="partners-label">Ils nous font confiance</p>
                 <div className="partners-track-wrapper">
@@ -200,12 +200,12 @@ const Home = () => {
                     <span className="sh-bold">Crafted for Style.</span>
                 </h2>
                 <div className="features-grid">
-                    {features.map((f) => (
+                        {features.map((f) => (
                         <div key={f.title} className="feature-card">
                             <div className="feature-img" style={{ backgroundColor: f.bg }}>
-                                {f.title === 'Visual Editor' && <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=90&fit=crop" alt="Visual Editor" />}
-                                {f.title === 'Asset Library' && <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=600&q=90&fit=crop" alt="Asset Library" />}
-                                {f.title === 'Seamless Workflow' && <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=90&fit=crop" alt="Seamless Workflow" />}
+                                {f.title === 'Éditeur Visuel' && <img src="/feature_studio.png" alt="Éditeur Visuel" />}
+                                {f.title === 'Bibliothèque d\'Assets' && <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=600&q=90&fit=crop" alt="Bibliothèque d'Assets" />}
+                                {f.title === 'Workflow Intégré' && <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&q=90&fit=crop" alt="Workflow Intégré" />}
                             </div>
                             <div className="feature-card-icon">{f.icon}</div>
                             <h3>{f.title}</h3>
@@ -275,20 +275,20 @@ const Home = () => {
             <RevealSection from="left">
             <section className="quality-section">
                 <div className="quality-img">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=90&fit=crop" alt="Quality textile" />
+                    <img src="/quality_fabric.png" alt="Qualité textile" />
                 </div>
                 <div className="quality-content">
                     <h2 className="split-heading">
-                        <span className="sh-italic">Quality that speaks</span>
-                        <span className="sh-bold-light">for itself.</span>
+                        <span className="sh-italic">Une qualité qui parle</span>
+                        <span className="sh-bold-light">d'elle-même.</span>
                     </h2>
-                    <p>We don't just create looks, we provide access to high-end materials. Every design produced validates the quality, every product is a handmade, production-run material.</p>
+                    <p>Nous ne créons pas seulement des looks, nous donnons accès à des matériaux haut de gamme. Chaque design produit valide la qualité, chaque produit est fait main, prêt pour la production.</p>
                     <ul className="quality-list">
-                        <li>✓ Organic Cotton &amp; Technical Fabrics</li>
-                        <li>✓ Clean, Manufactured &amp; Screen-Print Ready</li>
-                        <li>✓ Global Shipping with Made-to-order Options</li>
+                        <li>✓ Coton Biologique &amp; Tissus Techniques</li>
+                        <li>✓ Propre, Fabriqué &amp; Prêt pour la Sérigraphie</li>
+                        <li>✓ Expédition Mondiale avec Options Sur-Mesure</li>
                     </ul>
-                    <Link to="/editor" className="btn-outline-dark">Start Now</Link>
+                    <Link to="/editor" className="btn-outline-dark">Commencer</Link>
                 </div>
             </section>
             </RevealSection>
@@ -304,11 +304,11 @@ const Home = () => {
 
                 {/* Textile image strip */}
                 <div className="testimonials-textile-strip">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=90&fit=crop&crop=center" alt="tissu" />
-                    <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
-                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&q=90&fit=crop&crop=center" alt="tissu" />
-                    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
-                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=500&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=500&q=90&fit=crop&crop=center" alt="tissu" />
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=500&q=90&fit=crop&crop=center" alt="tissu" />
                 </div>
                 <div className="testimonials-grid">
                     {TESTIMONIALS.map((t) => (
@@ -335,13 +335,13 @@ const Home = () => {
             {/* CTA Banner */}
             <section className="cta-banner">
                 <h2 className="split-heading">
-                    <span className="sh-italic">Ready to transform</span>
-                    <span className="sh-bold-light">your design workflow?</span>
+                    <span className="sh-italic">Prêt à transformer</span>
+                    <span className="sh-bold-light">votre workflow de design ?</span>
                 </h2>
-                <p>Join the next generation of fashion creators. Build your brand, design your collections, and scale your business with ClothLab.</p>
+                <p>Rejoignez la prochaine génération de créateurs de mode. Développez votre marque, concevez vos collections et faites évoluer votre entreprise avec ClothLab.</p>
                 <div className="cta-actions">
-                    <Link to="/editor" className="btn-teal">Start Your Free Trial</Link>
-                    <Link to="/manufacturer" className="btn-outline-white">Contact Sales</Link>
+                    <Link to="/editor" className="btn-teal">Essai Gratuit</Link>
+                    <Link to="/manufacturer" className="btn-outline-white">Contacter les Ventes</Link>
                 </div>
             </section>
         </div>

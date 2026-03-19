@@ -117,12 +117,12 @@ const DECAL_LIBRARY: Record<string, { id: string; name: string; preview: string;
         { id: 'd12', name: 'Aztec Geo', preview: '◆', tag: 'Ethnic' },
     ],
     Illustrations: [
-        { id: 'd13', name: 'Astronaute', preview: '🧑\u200d🚀', tag: 'Sci-fi' },
+        { id: 'd13', name: 'Astronaute', preview: '🧑\u200d�dt', tag: 'Sci-fi' },
         { id: 'd14', name: 'Skateboard', preview: '🛹', tag: 'Street' },
         { id: 'd15', name: 'Cassette', preview: '📼', tag: 'Retro' },
         { id: 'd16', name: 'Fleur Tropicale', preview: '🌺', tag: 'Summer' },
         { id: 'd17', name: 'Loup Géo', preview: '🐺', tag: 'Nature' },
-        { id: 'd18', name: 'Crâne Artistique', preview: '💀', tag: 'Rock' },
+        { id: 'd18', name: 'Crâne Artistique', preview: '�dt', tag: 'Rock' },
     ],
     Texte: [
         { id: 'd19', name: '"ORIGINAL"', preview: 'OG', tag: 'Lettering' },
@@ -476,7 +476,7 @@ const Editor = () => {
                         <div className="lib-drawer-header">
                             <div className="lib-drawer-title">
                                 <Shirt size={18} />
-                                Bibliothèque 3D — Vêtements
+                                Bibliothèque 3D �dt� Vêtements
                             </div>
                             <button className="lib-close-btn" onClick={() => setClothesLibOpen(false)}><X size={18} /></button>
                         </div>
