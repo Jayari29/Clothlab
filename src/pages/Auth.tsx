@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
 import { signUpWithEmail, signInWithEmail, signInWithGoogle, signInWithGithub } from '../services/authService';
 import { UserRole } from '../types/database';
+import { images } from '../config/images';
 import './Auth.css';
 
 const Auth = () => {
@@ -14,7 +15,21 @@ const Auth = () => {
     const [displayName, setDisplayName] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [backgroundImage, setBackgroundImage] = useState(images.auth.fashionShow);
     const navigate = useNavigate();
+
+    // Rotate background images every 5 seconds
+    useEffect(() => {
+        const authImages = [images.auth.fashionShow, images.auth.designer, images.auth.background];
+        let currentIndex = 0;
+
+        const interval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % authImages.length;
+            setBackgroundImage(authImages[currentIndex]);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -83,11 +98,12 @@ const Auth = () => {
 
     return (
         <div className="auth-page">
-            {/* Left �dt� fashion image */}
+            {/* Left — fashion image */}
             <div className="auth-left">
                 <img
-                    src="/catalog_hero.png"
+                    src={backgroundImage}
                     alt="ClothLab Fashion"
+                    style={{ transition: 'opacity 1s ease-in-out' }}
                 />
                 <div className="auth-left-overlay">
                     <Link to="/" className="auth-logo-link">
@@ -146,16 +162,9 @@ const Auth = () => {
 
                     <form className="auth-form" onSubmit={handleSubmit}>
                         {error && (
-                            <div style={{
-                                padding: '12px',
-                                background: '#fee',
-                                border: '1px solid #fcc',
-                                borderRadius: '8px',
-                                color: '#c33',
-                                fontSize: '14px',
-                                marginBottom: '16px'
-                            }}>
-                                {error}
+                            <div className="auth-error">
+                                <AlertCircle size={16} />
+                                <span>{error}</span>
                             </div>
                         )}
 
@@ -219,8 +228,17 @@ const Auth = () => {
                         )}
 
                         <button type="submit" className="auth-submit-btn" disabled={loading}>
-                            {loading ? 'Chargement...' : mode === 'login' ? 'Se connecter' : 'Créer mon compte'}
-                            {!loading && <ArrowRight size={16} />}
+                            {loading ? (
+                                <>
+                                    <div className="spinner"></div>
+                                    Chargement...
+                                </>
+                            ) : (
+                                <>
+                                    {mode === 'login' ? 'Se connecter' : 'Créer mon compte'}
+                                    <ArrowRight size={16} />
+                                </>
+                            )}
                         </button>
                     </form>
 

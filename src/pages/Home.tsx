@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { RevealSection } from '../components/RevealSection';
+import { images } from '../config/images';
 import './Home.css';
 
 const stats = [
@@ -19,14 +20,14 @@ const HOW_STEPS = [
     {
         num: '02',
         title: 'Personnalisez librement',
-        desc: 'Couleur, matière, taille, décals, coupe�dt� chaque détail est ajustable en temps réel.',
+        desc: 'Couleur, matière, taille, décals, coupe�dt� chaque détail est ajustable en temps réel.',
         icon: '🎨',
     },
     {
         num: '03',
         title: 'Commandez en production',
         desc: 'Envoyez directement à un fabricant partenaire et recevez votre création livrée en 24h.',
-        icon: '�dt',
+        icon: '�dt',
     },
 ];
 
@@ -76,7 +77,7 @@ const PRICING = [
             'Onboarding personnalisé',
             'SLA garanti',
         ],
-        cta: 'Contacter l�dt�équipe',
+        cta: 'Contacter l�dt�équipe',
         ctaPath: '/auth',
     },
 ];
@@ -95,28 +96,28 @@ const TESTIMONIALS = [
         name: 'Sofia R.',
         role: 'Creative Director, Maison Sélène',
         avatar: 'https://i.pravatar.cc/64?img=47',
-        quote: '« ClothLab a complètement transformé notre processus. L�dt�éditeur 3D est intuitif et les rendus sont époustouflants. »',
+        quote: '« ClothLab a complètement transformé notre processus. L�dt�éditeur 3D est intuitif et les rendus sont époustouflants. »',
         stars: 5,
     },
     {
         name: 'Karim B.',
         role: 'Fondateur, Urbàn Studio',
         avatar: 'https://i.pravatar.cc/64?img=12',
-        quote: '« En 48h, j�dt�avais mes premiers prototypes entre les mains. La qualité de production est au rendez-vous. »',
+        quote: '« En 48h, j�dt�avais mes premiers prototypes entre les mains. La qualité de production est au rendez-vous. »',
         stars: 5,
     },
     {
         name: 'Léa M.',
         role: 'Styliste indépendante',
         avatar: 'https://i.pravatar.cc/64?img=32',
-        quote: '« La bibliothèque de décals et les options sur-mesure m�dt�ont permis de proposer des pièces vraiment uniques. »',
+        quote: '« La bibliothèque de décals et les options sur-mesure m�dt�ont permis de proposer des pièces vraiment uniques. »',
         stars: 5,
     },
     {
         name: 'Nassim T.',
         role: 'Manager, CollectiveDrop',
         avatar: 'https://i.pravatar.cc/64?img=68',
-        quote: '« On gère des drops de 500 pièces par mois via ClothLab. Le tableau de bord fabricant est exactement ce qu�dt�il nous fallait. »',
+        quote: '« On gère des drops de 500 pièces par mois via ClothLab. Le tableau de bord fabricant est exactement ce qu�dt�il nous fallait. »',
         stars: 5,
     },
 ];
@@ -179,7 +180,7 @@ const Home = () => {
                 ))}
             </section>
 
-            {/* Partners / Trust Bar �dt� auto-scrolling marquee */}
+            {/* Partners / Trust Bar �dt� auto-scrolling marquee */}
             <div className="partners-bar">
                 <p className="partners-label">Ils nous font confiance</p>
                 <div className="partners-track-wrapper">
