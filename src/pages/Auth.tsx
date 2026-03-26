@@ -1,22 +1,89 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { signUpWithEmail, signInWithEmail, signInWithGoogle, signInWithGithub } from '../services/authService';
+import { UserRole } from '../types/database';
 import './Auth.css';
 
 const Auth = () => {
     const [mode, setMode] = useState<'login' | 'signup'>('login');
     const [showPass, setShowPass] = useState(false);
-    const [role, setRole] = useState('consumer');
+    const [role, setRole] = useState<UserRole>('designer');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [displayName, setDisplayName] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        navigate(role === 'manufacturer' ? '/manufacturer' : '/consumer');
+        setError('');
+        setLoading(true);
+
+        try {
+            if (mode === 'signup') {
+                await signUpWithEmail(email, password, displayName, role);
+            } else {
+                await signInWithEmail(email, password);
+            }
+
+            // Navigate based on role
+            if (role === 'manufacturer') {
+                navigate('/manufacturer');
+            } else if (role === 'designer') {
+                navigate('/consumer');
+            } else {
+                navigate('/'); // Admin goes to home for now
+            }
+        } catch (err: any) {
+            setError(err.message || 'Authentication failed');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGoogleSignIn = async () => {
+        setError('');
+        setLoading(true);
+
+        try {
+            await signInWithGoogle(role);
+            // Navigate based on role
+            if (role === 'manufacturer') {
+                navigate('/manufacturer');
+            } else {
+                navigate('/consumer');
+            }
+        } catch (err: any) {
+            setError(err.message || 'Google sign-in failed');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleGithubSignIn = async () => {
+        setError('');
+        setLoading(true);
+
+        try {
+            await signInWithGithub(role);
+            // Navigate based on role
+            if (role === 'manufacturer') {
+                navigate('/manufacturer');
+            } else {
+                navigate('/consumer');
+            }
+        } catch (err: any) {
+            setError(err.message || 'GitHub sign-in failed');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="auth-page">
-            {/* Left âdt” fashion image */}
+            {/* Left ï¿½dtï¿½ fashion image */}
             <div className="auth-left">
                 <img
                     src="/catalog_hero.png"
@@ -28,7 +95,7 @@ const Auth = () => {
                     </Link>
                     <div className="auth-quote">
                         <p>"Design the future of fashion,<br />one stitch at a time."</p>
-                        <cite>âdt” ClothLab Studio</cite>
+                        <cite>ï¿½dtï¿½ ClothLab Studio</cite>
                     </div>
                     <div className="auth-stats-row">
                         {[
@@ -45,7 +112,7 @@ const Auth = () => {
                 </div>
             </div>
 
-            {/* Right âdt” form */}
+            {/* Right ï¿½dtï¿½ form */}
             <div className="auth-right">
                 <div className="auth-form-wrap">
                     <div className="auth-form-header">
@@ -78,12 +145,26 @@ const Auth = () => {
                     </div>
 
                     <form className="auth-form" onSubmit={handleSubmit}>
+                        {error && (
+                            <div style={{
+                                padding: '12px',
+                                background: '#fee',
+                                border: '1px solid #fcc',
+                                borderRadius: '8px',
+                                color: '#c33',
+                                fontSize: '14px',
+                                marginBottom: '16px'
+                            }}>
+                                {error}
+                            </div>
+                        )}
+
                         {mode === 'signup' && (
                             <div className="auth-field">
                                 <label>
                                     <User size={14} /> Nom complet
                                 </label>
-                                <input type="text" placeholder="Mahdi Benali" required />
+                                <input type="text" placeholder="Mahdi Benali" value={displayName} onChange={(e) => setDisplayName(e.target.value)} required />
                             </div>
                         )}
 
@@ -91,7 +172,7 @@ const Auth = () => {
                             <label>
                                 <Mail size={14} /> Email
                             </label>
-                            <input type="email" placeholder="vous@example.com" required />
+                            <input type="email" placeholder="vous@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
                         </div>
 
                         <div className="auth-field">
@@ -101,7 +182,9 @@ const Auth = () => {
                             <div className="auth-input-wrap">
                                 <input
                                     type={showPass ? 'text' : 'password'}
-                                    placeholder="âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢âdt¢"
+                                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
                                 <button
@@ -126,17 +209,18 @@ const Auth = () => {
                                 <select
                                     className="auth-select"
                                     value={role}
-                                    onChange={e => setRole(e.target.value)}
+                                    onChange={e => setRole(e.target.value as UserRole)}
                                 >
-                                    <option value="consumer">CrÃ©ateur / Consommateur</option>
+                                    <option value="designer">CrÃ©ateur / Consommateur</option>
                                     <option value="manufacturer">Fabricant</option>
+                                    <option value="admin">Administrateur</option>
                                 </select>
                             </div>
                         )}
 
-                        <button type="submit" className="auth-submit-btn">
-                            {mode === 'login' ? 'Se connecter' : 'CrÃ©er mon compte'}
-                            <ArrowRight size={16} />
+                        <button type="submit" className="auth-submit-btn" disabled={loading}>
+                            {loading ? 'Chargement...' : mode === 'login' ? 'Se connecter' : 'CrÃ©er mon compte'}
+                            {!loading && <ArrowRight size={16} />}
                         </button>
                     </form>
 
@@ -145,7 +229,7 @@ const Auth = () => {
                     </div>
 
                     <div className="auth-socials">
-                        <button className="auth-social-btn">
+                        <button className="auth-social-btn" onClick={handleGoogleSignIn} type="button" disabled={loading}>
                             <img
                                 src="https://www.svgrepo.com/show/475656/google-color.svg"
                                 alt="Google"
@@ -153,7 +237,7 @@ const Auth = () => {
                             />
                             Google
                         </button>
-                        <button className="auth-social-btn">
+                        <button className="auth-social-btn" onClick={handleGithubSignIn} type="button" disabled={loading}>
                             <img
                                 src="https://www.svgrepo.com/show/448234/github.svg"
                                 alt="GitHub"

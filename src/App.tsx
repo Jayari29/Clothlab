@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Auth from './pages/Auth';
 import Order from './pages/Order';
 import NotFound from './pages/NotFound';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -17,15 +18,54 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="catalog" element={<Catalog />} />
-          <Route path="consumer" element={<ConsumerDashboard />} />
-          <Route path="manufacturer" element={<ManufacturerDashboard />} />
-          <Route path="profile" element={<Profile />} />
+
+          {/* Protected routes - require authentication */}
+          <Route
+            path="consumer"
+            element={
+              <ProtectedRoute allowedRoles={['designer', 'admin']}>
+                <ConsumerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="manufacturer"
+            element={
+              <ProtectedRoute allowedRoles={['manufacturer', 'admin']}>
+                <ManufacturerDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="auth" element={<Auth />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+
         {/* Editor outside MainLayout for full-screen 3D experience */}
-        <Route path="/editor" element={<Editor />} />
-        <Route path="/order" element={<Order />} />
+        <Route
+          path="/editor"
+          element={
+            <ProtectedRoute allowedRoles={['designer', 'admin']}>
+              <Editor />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <ProtectedRoute>
+              <Order />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

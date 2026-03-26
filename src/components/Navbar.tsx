@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Layers, Gem, Factory, BadgeDollarSign, Menu, X, User } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Layers, Gem, Factory, BadgeDollarSign, Menu, X, User, LogOut } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { signOutUser } from '../services/authService';
 import './Navbar.css';
 
 const navItems = [
@@ -12,6 +14,8 @@ const navItems = [
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { currentUser, userData } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,6 +34,16 @@ const Navbar = () => {
     if (href === '/') return location.pathname === '/';
     if (href.startsWith('/#')) return false;
     return location.pathname.startsWith(href);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOutUser();
+      navigate('/');
+      setMenuOpen(false);
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
@@ -54,20 +68,31 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-actions">
-          <Link
-            to="/auth"
-            className={`nav-login ${isActive('/auth') ? 'nav-login-active' : ''}`}
-          >
-            Se connecter
-          </Link>
-          <Link to="/editor" className="btn-get-started">Commencer →</Link>
-          <Link to="/profile" className="navbar-avatar" title="Mon profil">
-            <img src="https://i.pravatar.cc/36?img=47" alt="Profil" />
-            {isActive('/profile') && <span className="avatar-active-ring" />}
-          </Link>
+          {!currentUser ? (
+            <>
+              <Link
+                to="/auth"
+                className={`nav-login ${isActive('/auth') ? 'nav-login-active' : ''}`}
+              >
+                Se connecter
+              </Link>
+              <Link to="/editor" className="btn-get-started">Commencer →</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/editor" className="btn-get-started">Studio 3D</Link>
+              <Link to="/profile" className="navbar-avatar" title={userData?.displayName || 'Mon profil'}>
+                <img
+                  src={userData?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(userData?.displayName || 'User')}&background=6366f1&color=fff`}
+                  alt="Profil"
+                />
+                {isActive('/profile') && <span className="avatar-active-ring" />}
+              </Link>
+            </>
+          )}
         </div>
 
-        {/* Hamburger �dt� mobile only */}
+        {/* Hamburger �dt� mobile only */}
         <button
           className="navbar-hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -92,12 +117,22 @@ const Navbar = () => {
             </Link>
           ))}
           <div className="mobile-nav-divider" />
-          <Link to="/profile" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
-            <User size={15} /> Mon profil
-          </Link>
-          <Link to="/auth" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
-            Se connecter
-          </Link>
+
+          {currentUser ? (
+            <>
+              <Link to="/profile" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+                <User size={15} /> {userData?.displayName || 'Mon profil'}
+              </Link>
+              <button onClick={handleLogout} className="mobile-nav-link" style={{ width: '100%', textAlign: 'left' }}>
+                <LogOut size={15} /> Se déconnecter
+              </button>
+            </>
+          ) : (
+            <Link to="/auth" className="mobile-nav-link" onClick={() => setMenuOpen(false)}>
+              Se connecter
+            </Link>
+          )}
+
           <Link to="/editor" className="mobile-nav-cta" onClick={() => setMenuOpen(false)}>
             Commencer →
           </Link>

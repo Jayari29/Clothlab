@@ -1,0 +1,232 @@
+/* ============================================
+   ENHANCED MOBILE STYLES (480px and below)
+   Comprehensive mobile optimizations for Home page
+   ============================================ */
+
+@media (max-width: 480px) {
+    /* Hero section */
+    .hero-section {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+
+    .hero-actions a {
+        padding: 0.625rem 1rem;
+        font-size: 0.85rem;
+        min-height: 2.5rem;
+    }
+
+    .hero-model-img {
+        height: 250px;
+    }
+
+    /* Stats bar */
+    .stat-value {
+        font-size: 1.6rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* Features section */
+    .features-section {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+
+    .features-grid {
+        gap: 1rem;
+    }
+
+    .feature-card {
+        border-radius: 12px;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+        padding: 0.3rem 1rem;
+    }
+
+    .feature-card p {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem 1rem;
+    }
+
+    .feature-card-icon {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    /* How section */
+    .how-section {
+        padding: 3rem 1rem;
+    }
+
+    .how-steps {
+        gap: 0.75rem;
+    }
+
+    .how-step {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        border-radius: 14px;
+    }
+
+    .how-step-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .how-step-title {
+        font-size: 1rem;
+    }
+
+    .how-step-desc {
+        font-size: 0.8rem;
+    }
+
+    /* Pricing section */
+    .pricing-section {
+        padding: 3rem 1rem;
+    }
+
+    .pricing-grid {
+        gap: 1rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 16px;
+    }
+
+    .pricing-price {
+        font-size: 2rem;
+    }
+
+    .pricing-perks {
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing-perks li {
+        font-size: 0.82rem;
+    }
+
+    .pricing-card .btn-teal {
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+        width: 100%;
+    }
+
+    /* Quality section */
+    .quality-section {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .quality-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .quality-content > p {
+        font-size: 0.9rem;
+    }
+
+    .quality-list li {
+        font-size: 0.85rem;
+    }
+
+    .btn-outline-dark {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+        padding: 3rem 1rem;
+    }
+
+    .cta-banner h2 {
+        font-size: 1.5rem;
+    }
+
+    .cta-banner p {
+        font-size: 0.9rem;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .cta-actions a {
+        width: 100%;
+        padding: 0.75rem 1.25rem;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+        padding: 3rem 1rem;
+    }
+
+    .th-line-accent {
+        font-size: 1.8rem;
+    }
+
+    .th-line-main {
+        font-size: 1.4rem;
+    }
+
+    .testimonials-textile-strip {
+        gap: 0.4rem;
+    }
+
+    .testimonials-textile-strip img {
+        height: 70px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.25rem;
+    }
+
+    .testimonial-quote {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-author {
+        gap: 0.5rem;
+    }
+
+    .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .testimonial-name {
+        font-size: 0.85rem;
+    }
+
+    .testimonial-role {
+        font-size: 0.7rem;
+    }
+
+    /* Partners bar */
+    .partners-bar {
+        padding: 2rem 1rem;
+    }
+
+    .partners-logos {
+        gap: 1.25rem;
+    }
+
+    .partner-name {
+        font-size: 0.95rem;
+    }
+}

@@ -65,11 +65,13 @@
     gap: 0.35rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #374151;
+    color: #1f2937;
     text-decoration: none;
     transition: color 0.25s;
     position: relative;
-    padding-bottom: 3px;
+    padding: 0.5rem 0.75rem;
+    min-height: 2.75rem;
+    border-radius: 0.375rem;
 }
 
 .nav-link::after {
@@ -131,10 +133,14 @@
 .nav-login {
     font-size: 0.9rem;
     font-weight: 500;
-    color: #374151;
+    color: #1f2937;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1rem;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
     transition: color 0.2s;
+    border-radius: 0.375rem;
 }
 
 .nav-login:hover {
@@ -149,13 +155,18 @@
 .btn-get-started {
     background: linear-gradient(135deg, #00A8A8 0%, #2B3580 100%);
     color: #fff;
-    padding: 0.5rem 1.3rem;
+    padding: 0.625rem 1.3rem;
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 10px rgba(0,168,168,0.3);
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-get-started:hover {
@@ -201,10 +212,15 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #374151;
-    padding: 0.35rem;
+    color: #1f2937;
+    padding: 0.5rem;
     border-radius: 6px;
     transition: background 0.15s;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar-hamburger:hover {
