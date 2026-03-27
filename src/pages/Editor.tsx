@@ -1,8 +1,5 @@
-import { useState, useRef } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment, Float, Preload } from '@react-three/drei';
-import * as THREE from 'three';
 import {
     Shirt, ShoppingBag, Scissors, Watch,
     UploadCloud, RefreshCw, Hand, ZoomIn, Video,
@@ -12,6 +9,8 @@ import {
 } from 'lucide-react';
 
 import './Editor.css';
+
+const EditorCanvas = lazy(() => import('../components/EditorCanvas'));
 
 const COLORS = [
     '#F6F8F8', '#111111', '#3B82F6', '#EF4444', '#10B981', '#F59E0B',
@@ -40,8 +39,8 @@ const STANDARD_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
 const FIT_TYPES = [
     { id: 'regular', label: 'Regular', desc: 'Coupe standard' },
-    { id: 'slim', label: 'Slim', desc: 'Ajusté au corps' },
-    { id: 'oversized', label: 'Oversized', desc: 'Ample et décontracté' },
+    { id: 'slim', label: 'Slim', desc: 'AjustÃ© au corps' },
+    { id: 'oversized', label: 'Oversized', desc: 'Ample et dÃ©contractÃ©' },
 ];
 
 const MEASUREMENTS = [
@@ -49,7 +48,7 @@ const MEASUREMENTS = [
     { key: 'waist', label: 'Taille', unit: 'cm', placeholder: '80' },
     { key: 'hips', label: 'Hanches', unit: 'cm', placeholder: '100' },
     { key: 'length', label: 'Longueur', unit: 'cm', placeholder: '70' },
-    { key: 'shoulder', label: 'Épaules', unit: 'cm', placeholder: '46' },
+    { key: 'shoulder', label: 'Ã‰paules', unit: 'cm', placeholder: '46' },
     { key: 'sleeve', label: 'Manche', unit: 'cm', placeholder: '62' },
 ] as const;
 
@@ -91,7 +90,7 @@ const CLOTHES_LIBRARY: Record<string, { id: string; name: string; badge: string;
         { id: 'a1', name: 'Casquette 5-panel', badge: 'Streetwear', bg: '#111', accent: '#00A8A8' },
         { id: 'a2', name: 'Beanie', badge: 'Hiver', bg: '#2B3580', accent: '#fff' },
         { id: 'a3', name: 'Tote Bag', badge: 'Eco', bg: '#10B981', accent: '#fff' },
-        { id: 'a4', name: 'Sac à dos', badge: 'Urban', bg: '#9CA3AF', accent: '#fff' },
+        { id: 'a4', name: 'Sac Ã  dos', badge: 'Urban', bg: '#9CA3AF', accent: '#fff' },
         { id: 'a5', name: 'Chaussettes', badge: 'Basics', bg: '#F59E0B', accent: '#fff' },
         { id: 'a6', name: 'Ceinture', badge: 'Accessoire', bg: '#EC4899', accent: '#fff' },
     ],
@@ -102,57 +101,39 @@ const DECAL_CATEGORIES = ['Logos', 'Patterns', 'Illustrations', 'Texte'];
 const DECAL_LIBRARY: Record<string, { id: string; name: string; preview: string; tag: string }[]> = {
     Logos: [
         { id: 'd1', name: 'ClothLab Badge', preview: 'CL', tag: 'Brand' },
-        { id: 'd2', name: 'Crown Icon', preview: '♛', tag: 'Premium' },
-        { id: 'd3', name: 'Lightning Bolt', preview: '⚡', tag: 'Sport' },
-        { id: 'd4', name: 'Rose Emblem', preview: '🌹', tag: 'Floral' },
-        { id: 'd5', name: 'Dragon Crest', preview: '🐉', tag: 'Fantasy' },
-        { id: 'd6', name: 'Globe Mark', preview: '🌐', tag: 'Urban' },
+        { id: 'd2', name: 'Crown Icon', preview: 'â™›', tag: 'Premium' },
+        { id: 'd3', name: 'Lightning Bolt', preview: 'âš¡', tag: 'Sport' },
+        { id: 'd4', name: 'Rose Emblem', preview: 'ðŸŒ¹', tag: 'Floral' },
+        { id: 'd5', name: 'Dragon Crest', preview: 'ðŸ‰', tag: 'Fantasy' },
+        { id: 'd6', name: 'Globe Mark', preview: 'ðŸŒ', tag: 'Urban' },
     ],
     Patterns: [
-        { id: 'd7', name: 'Camouflage', preview: '░░', tag: 'Military' },
-        { id: 'd8', name: 'Tie-Dye Burst', preview: '◎', tag: 'Festival' },
-        { id: 'd9', name: 'Houndstooth', preview: '▣', tag: 'Classic' },
-        { id: 'd10', name: 'Damier', preview: '⬛', tag: 'Luxe' },
-        { id: 'd11', name: 'Grunge Splatter', preview: '✦', tag: 'Street' },
-        { id: 'd12', name: 'Aztec Geo', preview: '◆', tag: 'Ethnic' },
+        { id: 'd7', name: 'Camouflage', preview: 'â–‘â–‘', tag: 'Military' },
+        { id: 'd8', name: 'Tie-Dye Burst', preview: 'â—Ž', tag: 'Festival' },
+        { id: 'd9', name: 'Houndstooth', preview: 'â–£', tag: 'Classic' },
+        { id: 'd10', name: 'Damier', preview: 'â¬›', tag: 'Luxe' },
+        { id: 'd11', name: 'Grunge Splatter', preview: 'âœ¦', tag: 'Street' },
+        { id: 'd12', name: 'Aztec Geo', preview: 'â—†', tag: 'Ethnic' },
     ],
     Illustrations: [
-        { id: 'd13', name: 'Astronaute', preview: '🧑\u200d�dt', tag: 'Sci-fi' },
-        { id: 'd14', name: 'Skateboard', preview: '🛹', tag: 'Street' },
-        { id: 'd15', name: 'Cassette', preview: '📼', tag: 'Retro' },
-        { id: 'd16', name: 'Fleur Tropicale', preview: '🌺', tag: 'Summer' },
-        { id: 'd17', name: 'Loup Géo', preview: '🐺', tag: 'Nature' },
-        { id: 'd18', name: 'Crâne Artistique', preview: '�dt', tag: 'Rock' },
+        { id: 'd13', name: 'Astronaute', preview: 'ðŸ§‘\u200dðŸšdt', tag: 'Sci-fi' },
+        { id: 'd14', name: 'Skateboard', preview: 'ðŸ›¹', tag: 'Street' },
+        { id: 'd15', name: 'Cassette', preview: 'ðŸ“¼', tag: 'Retro' },
+        { id: 'd16', name: 'Fleur Tropicale', preview: 'ðŸŒº', tag: 'Summer' },
+        { id: 'd17', name: 'Loup GÃ©o', preview: 'ðŸº', tag: 'Nature' },
+        { id: 'd18', name: 'CrÃ¢ne Artistique', preview: 'ðŸ’dt', tag: 'Rock' },
     ],
     Texte: [
         { id: 'd19', name: '"ORIGINAL"', preview: 'OG', tag: 'Lettering' },
         { id: 'd20', name: '"LIMITED"', preview: 'LTD', tag: 'Drop' },
         { id: 'd21', name: '"EST. 2025"', preview: '25', tag: 'Heritage' },
         { id: 'd22', name: '"MADE IN FR"', preview: 'FR', tag: 'Local' },
-        { id: 'd23', name: 'Signature Cursive', preview: '✍', tag: 'Custom' },
-        { id: 'd24', name: 'Numéro Maillot', preview: '#9', tag: 'Sport' },
+        { id: 'd23', name: 'Signature Cursive', preview: 'âœ', tag: 'Custom' },
+        { id: 'd24', name: 'NumÃ©ro Maillot', preview: '#9', tag: 'Sport' },
     ],
 };
 
 type MeasurementKey = typeof MEASUREMENTS[number]['key'];
-
-const GarmentMesh = ({ color }: { color: string }) => {
-    const meshRef = useRef<THREE.Mesh>(null);
-    return (
-        <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
-            <mesh ref={meshRef}>
-                <torusKnotGeometry args={[1.2, 0.35, 200, 32]} />
-                <meshPhysicalMaterial
-                    color={color}
-                    roughness={0.3}
-                    metalness={0.5}
-                    clearcoat={0.8}
-                    clearcoatRoughness={0.1}
-                />
-            </mesh>
-        </Float>
-    );
-};
 
 const Editor = () => {
     const [selectedModel, setSelectedModel] = useState('Hoodies');
@@ -185,7 +166,7 @@ const Editor = () => {
         setTimeout(() => setToast(null), 3000);
     };
 
-    const handleSave = () => showToast('Projet sauvegardé avec succès !');
+    const handleSave = () => showToast('Projet sauvegardÃ© avec succÃ¨s !');
     const handleOrder = () => navigate('/order');
 
     const handleMeasurement = (key: MeasurementKey, value: string) => {
@@ -214,7 +195,7 @@ const Editor = () => {
                     <div className="editor-header-right">
                         <button className="btn-undo" title="Annuler"><Undo2 size={18} /></button>
                         <button className="btn-save" onClick={handleSave}><Save size={14} /> Sauvegarder</button>
-                        <button className="btn-order-teal" onClick={handleOrder}><ShoppingCart size={14} /> Commander →</button>
+                        <button className="btn-order-teal" onClick={handleOrder}><ShoppingCart size={14} /> Commander â†’</button>
                         <div className="editor-avatar">
                             <img src="https://i.pravatar.cc/32?img=12" alt="user" />
                         </div>
@@ -224,7 +205,7 @@ const Editor = () => {
                 <div className="editor-body">
                     {/* Left Panel */}
                     <aside className="editor-left-panel">
-                        <p className="panel-section-label">Modèles de base</p>
+                        <p className="panel-section-label">ModÃ¨les de base</p>
                         <div className="model-grid">
                             {MODELS.map(({ label, Icon }) => (
                                 <button
@@ -240,7 +221,7 @@ const Editor = () => {
 
                         <button className="lib-browse-btn" onClick={() => setClothesLibOpen(true)}>
                             <Library size={15} />
-                            Bibliothèque 3D
+                            BibliothÃ¨que 3D
                             <span className="lib-count-badge">{Object.values(CLOTHES_LIBRARY).flat().length}</span>
                         </button>
 
@@ -256,7 +237,7 @@ const Editor = () => {
                             <ChevronRight size={16} className="import-chevron" />
                         </button>
 
-                        <p className="panel-section-label-sm">Graphiques récents</p>
+                        <p className="panel-section-label-sm">Graphiques rÃ©cents</p>
                         <div className="recent-graphics">
                             {RECENTLY_UPLOADED.map((g, i) => (
                                 <div key={i} className="graphic-thumb" style={{ backgroundColor: g.bg }}>
@@ -274,21 +255,9 @@ const Editor = () => {
                         </div>
 
                         <div className="canvas-area">
-                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                                <ambientLight intensity={0.7} />
-                                <directionalLight position={[10, 10, 5]} intensity={1.5} />
-                                <spotLight position={[-10, 8, 8]} intensity={1.2} angle={0.3} penumbra={1} />
-                                <Environment preset="studio" />
-                                <GarmentMesh color={activeColor} />
-                                <OrbitControls
-                                    enableZoom={activeTool === 'Zoom'}
-                                    enablePan={activeTool === 'Pan'}
-                                    enableRotate={activeTool === 'Orbit'}
-                                    autoRotate
-                                    autoRotateSpeed={1}
-                                />
-                                <Preload all />
-                            </Canvas>
+                            <Suspense fallback={<div className="canvas-loading">Loading 3D studio...</div>}>
+                                <EditorCanvas activeColor={activeColor} activeTool={activeTool} />
+                            </Suspense>
                         </div>
 
                         <div className="viewport-toolbar">
@@ -311,8 +280,8 @@ const Editor = () => {
 
                     {/* Right Panel */}
                     <aside className="editor-right-panel">
-                        <h2 className="settings-title">Paramètres Studio</h2>
-                        <p className="settings-subtitle">Ajustez les propriétés de votre vêtement</p>
+                        <h2 className="settings-title">ParamÃ¨tres Studio</h2>
+                        <p className="settings-subtitle">Ajustez les propriÃ©tÃ©s de votre vÃªtement</p>
 
                         <div className="settings-section">
                             <div className="settings-section-header">
@@ -336,7 +305,7 @@ const Editor = () => {
                         </div>
 
                         <div className="settings-section">
-                            <span className="settings-label">MATIÈRE</span>
+                            <span className="settings-label">MATIÃˆRE</span>
                             <div className="fabric-list">
                                 {FABRIC_OPTIONS.map((f) => (
                                     <button
@@ -349,7 +318,7 @@ const Editor = () => {
                                             <span className="fabric-name">{f.name}</span>
                                             <span className="fabric-desc">{f.desc}</span>
                                         </div>
-                                        {activeFabric === f.name && <span className="fabric-check">✓</span>}
+                                        {activeFabric === f.name && <span className="fabric-check">âœ“</span>}
                                     </button>
                                 ))}
                             </div>
@@ -433,9 +402,9 @@ const Editor = () => {
 
                         <div className="settings-section">
                             <div className="settings-section-header">
-                                <span className="settings-label">DÉCALS</span>
+                                <span className="settings-label">DÃ‰CALS</span>
                                 <button className="decal-lib-btn" onClick={() => setDecalLibOpen(true)}>
-                                    <Image size={12} /> Bibliothèque
+                                    <Image size={12} /> BibliothÃ¨que
                                 </button>
                             </div>
 
@@ -444,7 +413,7 @@ const Editor = () => {
                                     <div className="decal-row">
                                         <span className="decal-name">{activeDecal.name}</span>
                                         <div className="decal-actions">
-                                            <button className="decal-action-btn" title="Aperçu"><Eye size={14} /></button>
+                                            <button className="decal-action-btn" title="AperÃ§u"><Eye size={14} /></button>
                                             <button className="decal-action-btn" title="Retirer" onClick={() => setActiveDecalId(null)}><X size={14} /></button>
                                         </div>
                                     </div>
@@ -452,17 +421,17 @@ const Editor = () => {
                                         <div className="decal-progress-bar">
                                             <div className="decal-progress-fill" style={{ width: '65%' }} />
                                         </div>
-                                        <span className="decal-scale-label">Échelle 65%</span>
+                                        <span className="decal-scale-label">Ã‰chelle 65%</span>
                                     </div>
                                 </>
                             ) : (
                                 <div style={{ fontSize: '0.78rem', color: '#9ca3af', textAlign: 'center', padding: '0.85rem 0', background: '#f9fafb', borderRadius: '8px', marginBottom: '0.65rem', border: '1px dashed #e5e7eb' }}>
-                                    Aucun décal sélectionné
+                                    Aucun dÃ©cal sÃ©lectionnÃ©
                                 </div>
                             )}
 
                             <button className="add-decal-btn" onClick={() => setDecalLibOpen(true)}>
-                                <PlusCircle size={15} /> {activeDecal ? 'Changer le décal' : 'Choisir un décal'}
+                                <PlusCircle size={15} /> {activeDecal ? 'Changer le dÃ©cal' : 'Choisir un dÃ©cal'}
                             </button>
                         </div>
                     </aside>
@@ -476,7 +445,7 @@ const Editor = () => {
                         <div className="lib-drawer-header">
                             <div className="lib-drawer-title">
                                 <Shirt size={18} />
-                                Bibliothèque 3D �dt� Vêtements
+                                BibliothÃ¨que 3D âdt” VÃªtements
                             </div>
                             <button className="lib-close-btn" onClick={() => setClothesLibOpen(false)}><X size={18} /></button>
                         </div>
@@ -494,7 +463,7 @@ const Editor = () => {
                         </div>
 
                         <div className="lib-result-count">
-                            {CLOTHES_LIBRARY[clothesCategory].length} modèle{CLOTHES_LIBRARY[clothesCategory].length > 1 ? 's' : ''}
+                            {CLOTHES_LIBRARY[clothesCategory].length} modÃ¨le{CLOTHES_LIBRARY[clothesCategory].length > 1 ? 's' : ''}
                         </div>
                         <div className="lib-grid">
                             {CLOTHES_LIBRARY[clothesCategory].map(item => (
@@ -505,7 +474,7 @@ const Editor = () => {
                                         setSelectedModel(item.name);
                                         setSelectedClothesItem(item.id);
                                         setClothesLibOpen(false);
-                                        showToast(`Modèle « ${item.name} » sélectionné`, 'info');
+                                        showToast(`ModÃ¨le Â« ${item.name} Â» sÃ©lectionnÃ©`, 'info');
                                     }}
                                 >
                                     <div className="lib-item-preview" style={{ background: item.bg, color: item.accent }}>
@@ -521,7 +490,7 @@ const Editor = () => {
 
                         <div className="lib-drawer-footer">
                             <button className="lib-import-btn">
-                                <UploadCloud size={15} /> Importer un modèle GLTF / OBJ
+                                <UploadCloud size={15} /> Importer un modÃ¨le GLTF / OBJ
                             </button>
                         </div>
                     </div>
@@ -535,7 +504,7 @@ const Editor = () => {
                         <div className="lib-drawer-header">
                             <div className="lib-drawer-title">
                                 <Sparkles size={18} />
-                                Bibliothèque Décals
+                                BibliothÃ¨que DÃ©cals
                             </div>
                             <button className="lib-close-btn" onClick={() => setDecalLibOpen(false)}><X size={18} /></button>
                         </div>
@@ -544,7 +513,7 @@ const Editor = () => {
                             <Search size={14} className="lib-search-icon" />
                             <input
                                 className="lib-search-input"
-                                placeholder="Rechercher un décal..."
+                                placeholder="Rechercher un dÃ©cal..."
                                 value={decalSearch}
                                 onChange={e => setDecalSearch(e.target.value)}
                             />
@@ -563,14 +532,14 @@ const Editor = () => {
                         </div>
 
                         <div className="lib-result-count">
-                            {filteredDecals.length} décal{filteredDecals.length !== 1 ? 's' : ''}
-                            {decalSearch && ` pour « ${decalSearch} »`}
+                            {filteredDecals.length} dÃ©cal{filteredDecals.length !== 1 ? 's' : ''}
+                            {decalSearch && ` pour Â« ${decalSearch} Â»`}
                         </div>
 
                         {filteredDecals.length === 0 ? (
                             <div className="lib-empty">
                                 <Image size={36} />
-                                <p>Aucun résultat pour « {decalSearch} »</p>
+                                <p>Aucun rÃ©sultat pour Â« {decalSearch} Â»</p>
                             </div>
                         ) : (
                             <div className="lib-grid decal-lib-grid">
@@ -586,7 +555,7 @@ const Editor = () => {
                                             <span className="lib-item-badge"><Tag size={9} /> {d.tag}</span>
                                         </div>
                                         {activeDecalId === d.id && (
-                                            <span className="decal-selected-mark">✓</span>
+                                            <span className="decal-selected-mark">âœ“</span>
                                         )}
                                     </button>
                                 ))}
@@ -599,11 +568,11 @@ const Editor = () => {
                                 disabled={!activeDecalId}
                                 onClick={() => {
                                     setDecalLibOpen(false);
-                                    if (activeDecalId) showToast('Décal appliqué avec succès !', 'success');
+                                    if (activeDecalId) showToast('DÃ©cal appliquÃ© avec succÃ¨s !', 'success');
                                 }}
                             >
                                 <PlusCircle size={14} />
-                                {activeDecalId ? `Appliquer « ${activeDecal?.name} »` : 'Sélectionnez un décal'}
+                                {activeDecalId ? `Appliquer Â« ${activeDecal?.name} Â»` : 'SÃ©lectionnez un dÃ©cal'}
                             </button>
                             <button className="lib-import-btn">
                                 <UploadCloud size={14} /> Importer une image / SVG

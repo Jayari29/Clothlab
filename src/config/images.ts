@@ -18,9 +18,11 @@ export const images = {
   // Features
   features: {
     studio: '/feature_studio.png',
-    studioFallback: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90&fit=crop',
-    assets: 'https://images.unsplash.com/photo-1614179818511-5e65ef3fae5f?w=800&q=90&fit=crop',
+    studioFallback: '/feature_studio.png',
+    assets: '/catalog_hero.png',
+    assetsFallback: '/quality_fabric.png',
     workflow: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=90&fit=crop',
+    workflowFallback: '/hero_model.png',
   },
 
   // Quality section

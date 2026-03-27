@@ -22,6 +22,7 @@ type Feature = {
   title: string;
   description: string;
   image: string;
+  fallbackImage?: string;
   accent: string;
   icon: LucideIcon;
 };
@@ -55,6 +56,7 @@ const features: Feature[] = [
     description:
       'Shape silhouettes, color stories, and graphics in one cinematic workspace built for fast iteration.',
     image: images.features.studio,
+    fallbackImage: images.features.studioFallback,
     accent: 'from-teal',
     icon: Palette,
   },
@@ -63,6 +65,7 @@ const features: Feature[] = [
     description:
       'Pull from premium mockups, textile references, and print layers without breaking creative flow.',
     image: images.features.assets,
+    fallbackImage: images.features.assetsFallback,
     accent: 'from-sand',
     icon: Boxes,
   },
@@ -71,6 +74,7 @@ const features: Feature[] = [
     description:
       'Move from concept to manufacturer-ready specs with fewer emails, cleaner approvals, and tighter timing.',
     image: images.features.workflow,
+    fallbackImage: images.features.workflowFallback,
     accent: 'from-ink',
     icon: Factory,
   },
@@ -285,7 +289,21 @@ const Home = () => {
               return (
                 <article key={feature.title} className={`feature-spotlight ${feature.accent}`}>
                   <div className="feature-spotlight__media">
-                    <img src={feature.image} alt={feature.title} />
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      loading="lazy"
+                      onError={(event) => {
+                        const fallbackImage = feature.fallbackImage ?? images.placeholder.product;
+
+                        if (event.currentTarget.dataset.fallbackApplied === 'true') {
+                          return;
+                        }
+
+                        event.currentTarget.dataset.fallbackApplied = 'true';
+                        event.currentTarget.src = fallbackImage;
+                      }}
+                    />
                   </div>
                   <div className="feature-spotlight__content">
                     <div className="feature-spotlight__icon">
@@ -307,17 +325,21 @@ const Home = () => {
             <div className="section-head section-head--light process-head">
               <p>Creative flow</p>
               <h2>A clearer path from concept energy to production confidence.</h2>
+              <span className="process-head__line" />
             </div>
 
-            <aside className="process-aside">
-              <div className="process-aside__pill">
-                <Sparkles size={14} />
-                Studio pipeline
+            <div className="process-aside">
+              <div className="process-aside__overview">
+                <div className="process-aside__pill">
+                  <Sparkles size={14} />
+                  Studio pipeline
+                </div>
+                <p>
+                  The workflow is built to keep design momentum high while making sampling, approvals, and
+                  manufacturer handoff feel much more structured.
+                </p>
               </div>
-              <p>
-                The workflow is built to keep design momentum high while making sampling, approvals, and
-                manufacturer handoff feel much more structured.
-              </p>
+
               <div className="process-aside__stats">
                 <div>
                   <strong>3 stages</strong>
@@ -327,24 +349,43 @@ const Home = () => {
                   <strong>Realtime</strong>
                   <span>feedback across each step</span>
                 </div>
+                <div>
+                  <strong>Spec-ready</strong>
+                  <span>handoff for sampling and approvals</span>
+                </div>
               </div>
-            </aside>
+            </div>
+          </div>
+
+          <div className="process-track" aria-hidden="true">
+            {steps.map((step) => (
+              <div key={step.id} className="process-track__item">
+                <span>{step.id}</span>
+              </div>
+            ))}
           </div>
 
           <div className="process-grid">
-            {steps.map((step) => {
+            {steps.map((step, index) => {
               const Icon = step.icon;
 
               return (
-                <article key={step.id} className="process-card">
+                <article key={step.id} className={`process-card process-card--${index + 1}`}>
                   <div className="process-card__top">
-                    <span className="process-card__index">{step.id}</span>
+                    <div className="process-card__meta">
+                      <span className="process-card__index">{step.id}</span>
+                      <span className="process-card__eyebrow">Stage {step.id}</span>
+                    </div>
                     <div className="process-card__icon">
                       <Icon size={18} />
                     </div>
                   </div>
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>
+                  <div className="process-card__footer">
+                    <span>{index === 0 ? 'Creative setup' : index === 1 ? 'Team review' : 'Factory handoff'}</span>
+                    <ArrowRight size={15} />
+                  </div>
                 </article>
               );
             })}

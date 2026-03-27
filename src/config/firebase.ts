@@ -12,7 +12,18 @@ const requiredEnvVars = [
   'VITE_FIREBASE_APP_ID',
 ] as const;
 
-const missingEnvVars = requiredEnvVars.filter((envKey) => !import.meta.env[envKey]);
+const placeholderMatchers = [
+  /^your[_-]/i,
+  /your[-_]project[-_]id/i,
+  /example/i,
+] as const;
+
+const getEnvValue = (envKey: typeof requiredEnvVars[number]) => String(import.meta.env[envKey] ?? '').trim();
+
+const missingEnvVars = requiredEnvVars.filter((envKey) => !getEnvValue(envKey));
+const placeholderEnvVars = requiredEnvVars.filter((envKey) =>
+  placeholderMatchers.some((matcher) => matcher.test(getEnvValue(envKey)))
+);
 
 if (missingEnvVars.length > 0) {
   throw new Error(
@@ -21,13 +32,20 @@ if (missingEnvVars.length > 0) {
   );
 }
 
+if (placeholderEnvVars.length > 0) {
+  throw new Error(
+    `Firebase environment variables still use placeholder values: ${placeholderEnvVars.join(', ')}. ` +
+    'Replace them with the real firebaseConfig values from Firebase Console > Project settings > Your apps.'
+  );
+}
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: getEnvValue('VITE_FIREBASE_API_KEY'),
+  authDomain: getEnvValue('VITE_FIREBASE_AUTH_DOMAIN'),
+  projectId: getEnvValue('VITE_FIREBASE_PROJECT_ID'),
+  storageBucket: getEnvValue('VITE_FIREBASE_STORAGE_BUCKET'),
+  messagingSenderId: getEnvValue('VITE_FIREBASE_MESSAGING_SENDER_ID'),
+  appId: getEnvValue('VITE_FIREBASE_APP_ID'),
 };
 
 const app = initializeApp(firebaseConfig);

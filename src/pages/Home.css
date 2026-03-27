@@ -610,24 +610,42 @@
 
 .process-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(19rem, 0.65fr);
-  gap: 1.5rem;
-  align-items: end;
-  margin-bottom: 2.4rem;
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .process-head {
   margin-bottom: 0;
-  max-width: 52rem;
+  max-width: 44rem;
+}
+
+.process-head__line {
+  display: block;
+  width: min(100%, 24rem);
+  height: 1px;
+  margin-top: 1.4rem;
+  background: linear-gradient(90deg, rgba(125, 240, 232, 0.65), rgba(125, 240, 232, 0));
 }
 
 .process-aside {
-  padding: 1.2rem 1.25rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(15rem, 0.85fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding: 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+  border-radius: 1.7rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
+}
+
+.process-aside__overview {
+  min-width: 0;
 }
 
 .process-aside__pill {
@@ -652,14 +670,16 @@
 
 .process-aside__stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 0.85rem;
-  margin-top: 1rem;
+  margin-top: 0;
 }
 
 .process-aside__stats div {
-  padding-top: 0.9rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .process-aside__stats strong,
@@ -679,6 +699,49 @@
   line-height: 1.55;
 }
 
+.process-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.process-track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(125, 240, 232, 0.15), rgba(125, 240, 232, 0.5), rgba(125, 240, 232, 0.15));
+  transform: translateY(-50%);
+}
+
+.process-track__item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.process-track__item span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid rgba(125, 240, 232, 0.2);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #7df0e8;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
 .process-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -686,19 +749,56 @@
 }
 
 .process-card {
+  position: relative;
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.6rem;
-  background: rgba(255, 255, 255, 0.05);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)),
+    rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(10px);
   box-shadow: 0 20px 46px rgba(0, 0, 0, 0.18);
-  transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+  transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+}
+
+.process-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top right, rgba(125, 240, 232, 0.18), transparent 24%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
 }
 
 .process-card:hover {
   transform: translateY(-6px);
   border-color: rgba(125, 240, 232, 0.34);
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05)),
+    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 26px 54px rgba(0, 0, 0, 0.24);
+}
+
+.process-card:hover::after {
+  opacity: 1;
+}
+
+.process-card--2 {
+  transform: translateY(1.25rem);
+}
+
+.process-card--3 {
+  transform: translateY(2.5rem);
+}
+
+.process-card--2:hover {
+  transform: translateY(0.85rem);
+}
+
+.process-card--3:hover {
+  transform: translateY(1.9rem);
 }
 
 .process-card__top {
@@ -707,11 +807,25 @@
   justify-content: space-between;
 }
 
+.process-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .process-card__index {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
+}
+
+.process-card__eyebrow {
+  color: rgba(125, 240, 232, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .process-card h3 {
@@ -725,6 +839,16 @@
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
   line-height: 1.75;
+}
+
+.process-card__footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.35rem;
+  color: #7df0e8;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .quality-section-v2 {
@@ -1085,6 +1209,10 @@
     align-items: start;
   }
 
+  .process-aside {
+    grid-template-columns: 1fr;
+  }
+
   .process-head,
   .process-aside {
     max-width: none;
@@ -1154,8 +1282,19 @@
     grid-template-columns: 1fr;
   }
 
+  .process-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .process-card--2,
+  .process-card--3,
+  .process-card--2:hover,
+  .process-card--3:hover {
+    transform: none;
+  }
+
   .process-aside__stats {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .quality-section-v2 {
@@ -1246,6 +1385,13 @@
 
   .process-aside {
     text-align: left;
+    padding: 1.1rem;
+  }
+
+  .process-track__item span {
+    min-width: 2.55rem;
+    height: 2.55rem;
+    padding: 0 0.7rem;
   }
 
   .partners-marquee {
@@ -1345,6 +1491,17 @@
 
   .process-aside__stats {
     grid-template-columns: 1fr;
+  }
+
+  .process-track {
+    gap: 0.6rem;
+  }
+
+  .process-track__item span {
+    min-width: 2.3rem;
+    height: 2.3rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
   }
 
   .feature-spotlight__content {
