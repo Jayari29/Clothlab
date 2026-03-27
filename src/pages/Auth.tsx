@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
 import { signUpWithEmail, signInWithEmail, signInWithGoogle, signInWithGithub } from '../services/authService';
-import { UserRole } from '../types/database';
+import type { UserRole } from '../types/database';
 import { images } from '../config/images';
 import './Auth.css';
 

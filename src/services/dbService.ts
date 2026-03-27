@@ -3,19 +3,17 @@ import {
   doc,
   getDoc,
   getDocs,
-  setDoc,
   updateDoc,
   deleteDoc,
   query,
   where,
   orderBy,
   limit,
-  QueryConstraint,
   addDoc,
   Timestamp,
 } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { Design, Order, Material, DesignerUser, ManufacturerUser } from '../types/database';
+import type { Design, Order, Material, DesignerUser, ManufacturerUser } from '../types/database';
 
 // ==================== DESIGNS ====================
 

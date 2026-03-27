@@ -1,8 +1,8 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User as FirebaseUser, onAuthStateChanged } from 'firebase/auth';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { onAuthStateChanged, type User as FirebaseUser } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { getUserData } from '../services/authService';
-import { AdminUser, DesignerUser, ManufacturerUser } from '../types/database';
+import type { AdminUser, DesignerUser, ManufacturerUser } from '../types/database';
 
 type UserData = AdminUser | DesignerUser | ManufacturerUser | null;
 

@@ -7,11 +7,11 @@ import {
   signInWithPopup,
   sendPasswordResetEmail,
   updateProfile,
-  User as FirebaseUser
+  type User as FirebaseUser
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
-import { UserRole, BaseUser, DesignerUser, ManufacturerUser, AdminUser } from '../types/database';
+import type { UserRole, BaseUser, DesignerUser, ManufacturerUser, AdminUser } from '../types/database';
 
 // Sign up with email and password
 export const signUpWithEmail = async (

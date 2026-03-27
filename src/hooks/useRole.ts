@@ -1,5 +1,5 @@
 import { useAuth } from '../contexts/AuthContext';
-import { UserRole } from '../types/database';
+import type { UserRole } from '../types/database';
 
 /**
  * Custom hook for role-based access control

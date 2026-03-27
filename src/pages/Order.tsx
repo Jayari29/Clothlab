@@ -4,16 +4,16 @@ import { CheckCircle, ChevronRight, Package, MapPin, CreditCard, ArrowLeft } fro
 import './Order.css';
 
 const DELIVERY_OPTIONS = [
-    { id: 'standard', label: 'Standard', delay: '5�dt�7 jours ouvrés', price: '€4.90' },
-    { id: 'express', label: 'Express',  delay: '2�dt�3 jours ouvrés', price: '€9.90' },
-    { id: 'same_day', label: '24h',     delay: 'Livraison le lendemain', price: '€14.90' },
+    { id: 'standard', label: 'Standard', delay: '5Ã¢dtâ€œ7 jours ouvrÃƒÂ©s', price: 'DT 4.90' },
+    { id: 'express', label: 'Express',  delay: '2Ã¢dtâ€œ3 jours ouvrÃƒÂ©s', price: 'DT 9.90' },
+    { id: 'same_day', label: '24h',     delay: 'Livraison le lendemain', price: 'DT 14.90' },
 ];
 
 const STEPS = [
-    { id: 1, label: 'Résumé',   Icon: Package    },
+    { id: 1, label: 'RÃƒÂ©sumÃƒÂ©',   Icon: Package    },
     { id: 2, label: 'Livraison', Icon: MapPin    },
     { id: 3, label: 'Paiement', Icon: CreditCard },
-    { id: 4, label: 'Confirmé', Icon: CheckCircle },
+    { id: 4, label: 'ConfirmÃƒÂ©', Icon: CheckCircle },
 ];
 
 const Order = () => {
@@ -31,7 +31,7 @@ const Order = () => {
 
     const selectedDelivery = DELIVERY_OPTIONS.find(d => d.id === delivery)!;
     const itemPrice = 59;
-    const deliveryPrice = parseFloat(selectedDelivery.price.replace('€', ''));
+    const deliveryPrice = parseFloat(selectedDelivery.price.replace('DT ', ''));
     const total = (itemPrice + deliveryPrice).toFixed(2);
 
     const next = () => setStep(s => Math.min(s + 1, 4));
@@ -42,7 +42,7 @@ const Order = () => {
             {/* Header */}
             <header className="order-header">
                 <Link to="/editor" className="order-back-link">
-                    <ArrowLeft size={18} /> Retour à l'éditeur
+                    <ArrowLeft size={18} /> Retour ÃƒÂ  l'ÃƒÂ©diteur
                 </Link>
                 <img src="/SVG/Asset 2.svg" alt="ClothLab" className="order-logo" />
                 <span />
@@ -63,22 +63,22 @@ const Order = () => {
                 </div>
 
                 <div className="order-content">
-                    {/* �dt�dt STEP 1: Summary �dt�dt */}
+                    {/* Ã¢â€dtÃ¢â€dt STEP 1: Summary Ã¢â€dtÃ¢â€dt */}
                     {step === 1 && (
                         <div className="order-card">
-                            <h2 className="order-card-title">Résumé de la commande</h2>
+                            <h2 className="order-card-title">RÃƒÂ©sumÃƒÂ© de la commande</h2>
                             <div className="order-summary-item">
                                 <div className="summary-preview" style={{ background: '#2B3580' }}>
-                                    <span style={{ fontSize: '2.5rem' }}>👕</span>
+                                    <span style={{ fontSize: '2.5rem' }}>Ã°Å¸â€˜â€¢</span>
                                 </div>
                                 <div className="summary-details">
                                     <span className="summary-name">Hoodie Classique</span>
-                                    <span className="summary-meta">Taille M · Regular · Heavy Cotton</span>
-                                    <span className="summary-meta">Couleur #F6F8F8 · Décal Logo Poitrine</span>
-                                    <span className="summary-price">€{itemPrice}.00</span>
+                                    <span className="summary-meta">Taille M Ã‚Â· Regular Ã‚Â· Heavy Cotton</span>
+                                    <span className="summary-meta">Couleur #F6F8F8 Ã‚Â· DÃƒÂ©cal Logo Poitrine</span>
+                                    <span className="summary-price">DT {itemPrice}.00</span>
                                 </div>
                                 <div className="summary-qty">
-                                    <span className="qty-label">Qté</span>
+                                    <span className="qty-label">QtÃƒÂ©</span>
                                     <span className="qty-val">1</span>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ const Order = () => {
                                             onClick={() => setDelivery(opt.id)}
                                         >
                                             <div className="delivery-radio">
-                                                <span>{delivery === opt.id ? '●' : '○'}</span>
+                                                <span>{delivery === opt.id ? 'Ã¢â€”Â' : 'Ã¢â€”â€¹'}</span>
                                             </div>
                                             <div className="delivery-info">
                                                 <span className="delivery-label">{opt.label}</span>
@@ -106,13 +106,13 @@ const Order = () => {
                             </div>
 
                             <div className="order-total-row">
-                                <span>Sous-total</span><span>€{itemPrice}.00</span>
+                                <span>Sous-total</span><span>DT {itemPrice}.00</span>
                             </div>
                             <div className="order-total-row">
                                 <span>Livraison ({selectedDelivery.label})</span><span>{selectedDelivery.price}</span>
                             </div>
                             <div className="order-total-row order-grand-total">
-                                <span>Total</span><span>€{total}</span>
+                                <span>Total</span><span>DT {total}</span>
                             </div>
 
                             <button className="order-next-btn" onClick={next}>
@@ -121,13 +121,13 @@ const Order = () => {
                         </div>
                     )}
 
-                    {/* �dt�dt STEP 2: Delivery �dt�dt */}
+                    {/* Ã¢â€dtÃ¢â€dt STEP 2: Delivery Ã¢â€dtÃ¢â€dt */}
                     {step === 2 && (
                         <div className="order-card">
                             <h2 className="order-card-title">Adresse de livraison</h2>
                             <div className="order-form-grid">
                                 <div className="form-group">
-                                    <label>Prénom</label>
+                                    <label>PrÃƒÂ©nom</label>
                                     <input value={form.firstName} onChange={handle('firstName')} placeholder="Sofia" />
                                 </div>
                                 <div className="form-group">
@@ -158,7 +158,7 @@ const Order = () => {
                                         <option>Suisse</option>
                                         <option>Canada</option>
                                         <option>Maroc</option>
-                                        <option>Algérie</option>
+                                        <option>AlgÃƒÂ©rie</option>
                                         <option>Tunisie</option>
                                     </select>
                                 </div>
@@ -170,7 +170,7 @@ const Order = () => {
                         </div>
                     )}
 
-                    {/* �dt�dt STEP 3: Payment �dt�dt */}
+                    {/* Ã¢â€dtÃ¢â€dt STEP 3: Payment Ã¢â€dtÃ¢â€dt */}
                     {step === 3 && (
                         <div className="order-card">
                             <h2 className="order-card-title">Informations de paiement</h2>
@@ -185,7 +185,7 @@ const Order = () => {
                                     <input value={form.cardName} onChange={handle('cardName')} placeholder="SOFIA RICHARD" />
                                 </div>
                                 <div className="form-group form-full">
-                                    <label>Numéro de carte</label>
+                                    <label>NumÃƒÂ©ro de carte</label>
                                     <input value={form.cardNumber} onChange={handle('cardNumber')} placeholder="4242 4242 4242 4242" maxLength={19} />
                                 </div>
                                 <div className="form-group">
@@ -198,10 +198,10 @@ const Order = () => {
                                 </div>
                             </div>
                             <div className="order-secure-note">
-                                🔒 Paiement sécurisé SSL 256-bit �dt� Vos données sont protégées.
+                                Ã°Å¸â€â€™ Paiement sÃƒÂ©curisÃƒÂ© SSL 256-bit Ã¢dtâ€ Vos donnÃƒÂ©es sont protÃƒÂ©gÃƒÂ©es.
                             </div>
                             <div className="order-total-row order-grand-total" style={{ marginTop: '1.25rem' }}>
-                                <span>Total à payer</span><span>€{total}</span>
+                                <span>Total ÃƒÂ  payer</span><span>DT {total}</span>
                             </div>
                             <div className="order-nav-row">
                                 <button className="order-back-btn" onClick={back}><ArrowLeft size={15} /> Retour</button>
@@ -212,7 +212,7 @@ const Order = () => {
                         </div>
                     )}
 
-                    {/* �dt�dt STEP 4: Confirmation �dt�dt */}
+                    {/* Ã¢â€dtÃ¢â€dt STEP 4: Confirmation Ã¢â€dtÃ¢â€dt */}
                     {step === 4 && (
                         <div className="order-card order-confirm-card">
                             <div className="confirm-icon">
@@ -220,25 +220,25 @@ const Order = () => {
                             </div>
                             <h2 className="split-heading confirm-split-heading">
                                 <span className="sh-italic">Commande</span>
-                                <span className="sh-bold">confirmée !</span>
+                                <span className="sh-bold">confirmÃƒÂ©e !</span>
                             </h2>
                             <p className="confirm-sub">
-                                Votre création est en route vers la production.<br />
-                                Un email de confirmation a été envoyé à <strong>{form.email || 'votre adresse'}</strong>.
+                                Votre crÃƒÂ©ation est en route vers la production.<br />
+                                Un email de confirmation a ÃƒÂ©tÃƒÂ© envoyÃƒÂ© ÃƒÂ  <strong>{form.email || 'votre adresse'}</strong>.
                             </p>
                             <div className="confirm-order-num">
-                                Numéro de commande : <strong>#CL-{orderNum}</strong>
+                                NumÃƒÂ©ro de commande : <strong>#CL-{orderNum}</strong>
                             </div>
                             <div className="confirm-delivery-info">
                                 <Package size={16} />
-                                Livraison {selectedDelivery.label} �dt� {selectedDelivery.delay}
+                                Livraison {selectedDelivery.label} Ã¢dtâ€ {selectedDelivery.delay}
                             </div>
                             <div className="confirm-actions">
                                 <Link to="/consumer" className="order-next-btn" style={{ textDecoration: 'none', textAlign: 'center' }}>
                                     Voir mes commandes
                                 </Link>
                                 <Link to="/editor" className="order-back-btn" style={{ textDecoration: 'none', textAlign: 'center' }}>
-                                    Créer un autre design
+                                    CrÃƒÂ©er un autre design
                                 </Link>
                             </div>
                         </div>
@@ -249,16 +249,16 @@ const Order = () => {
                         <aside className="order-sidebar">
                             <h3 className="sidebar-title">Votre commande</h3>
                             <div className="sidebar-item">
-                                <div className="sidebar-thumb" style={{ background: '#2B3580' }}>👕</div>
+                                <div className="sidebar-thumb" style={{ background: '#2B3580' }}>Ã°Å¸â€˜â€¢</div>
                                 <div>
                                     <p className="sidebar-item-name">Hoodie Classique</p>
-                                    <p className="sidebar-item-meta">Taille M · Regular</p>
+                                    <p className="sidebar-item-meta">Taille M Ã‚Â· Regular</p>
                                 </div>
-                                <span className="sidebar-item-price">€59</span>
+                                <span className="sidebar-item-price">DT 59</span>
                             </div>
                             <div className="sidebar-divider" />
                             <div className="sidebar-line"><span>Livraison</span><span>{selectedDelivery.price}</span></div>
-                            <div className="sidebar-line sidebar-total-line"><span>Total</span><span>€{total}</span></div>
+                            <div className="sidebar-line sidebar-total-line"><span>Total</span><span>DT {total}</span></div>
                         </aside>
                     )}
                 </div>

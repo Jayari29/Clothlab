@@ -8,27 +8,27 @@ import {
 import './ManufacturerDashboard.css';
 
 const ORDERS = [
-    { id: '#CL-3012', client: 'Mahdi Benali', product: 'Hoodie Minimaliste', qty: 50, material: 'Heavy Cotton', status: 'En production', date: '08 Mars 2026', amount: '€2 950', priority: 'high', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=80&q=80&fit=crop' },
-    { id: '#CL-2989', client: 'Yasmine Aït', product: 'Bomber Urban', qty: 30, material: 'Nylon Ripstop', status: 'En attente', date: '06 Mars 2026', amount: '€2 970', priority: 'medium', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=80&q=80&fit=crop' },
-    { id: '#CL-2891', client: 'Rayan Chérif', product: 'Tee Oversize', qty: 120, material: 'Jersey Coton', status: 'Expédié', date: '04 Mars 2026', amount: '€3 480', priority: 'low', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=80&q=80&fit=crop' },
-    { id: '#CL-2810', client: 'Amina Khaldi', product: 'Cargo Pants', qty: 40, material: 'Twill Cotton', status: 'Livré', date: '01 Mars 2026', amount: '€3 160', priority: 'low', img: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=80&q=80&fit=crop' },
-    { id: '#CL-2745', client: 'Karim Benmouss', product: 'Veste Oversize', qty: 25, material: 'Poly Canvas', status: 'En production', date: '28 Fév 2026', amount: '€2 225', priority: 'high', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=80&q=80&fit=crop' },
+    { id: '#CL-3012', client: 'Mahdi Benali', product: 'Hoodie Minimaliste', qty: 50, material: 'Heavy Cotton', status: 'En production', date: '08 Mars 2026', amount: 'DT 2 950', priority: 'high', img: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=80&q=80&fit=crop' },
+    { id: '#CL-2989', client: 'Yasmine AÃ¯t', product: 'Bomber Urban', qty: 30, material: 'Nylon Ripstop', status: 'En attente', date: '06 Mars 2026', amount: 'DT 2 970', priority: 'medium', img: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=80&q=80&fit=crop' },
+    { id: '#CL-2891', client: 'Rayan ChÃ©rif', product: 'Tee Oversize', qty: 120, material: 'Jersey Coton', status: 'ExpÃ©diÃ©', date: '04 Mars 2026', amount: 'DT 3 480', priority: 'low', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=80&q=80&fit=crop' },
+    { id: '#CL-2810', client: 'Amina Khaldi', product: 'Cargo Pants', qty: 40, material: 'Twill Cotton', status: 'LivrÃ©', date: '01 Mars 2026', amount: 'DT 3 160', priority: 'low', img: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=80&q=80&fit=crop' },
+    { id: '#CL-2745', client: 'Karim Benmouss', product: 'Veste Oversize', qty: 25, material: 'Poly Canvas', status: 'En production', date: '28 FÃ©v 2026', amount: 'DT 2 225', priority: 'high', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=80&q=80&fit=crop' },
 ];
 
 const PIPELINE = [
-    { stage: 'Reçues', count: 4, color: '#F59E0B' },
+    { stage: 'ReÃ§ues', count: 4, color: '#F59E0B' },
     { stage: 'Validation', count: 2, color: '#3B82F6' },
     { stage: 'Production', count: 7, color: '#8B5CF6' },
-    { stage: 'Contrôle', count: 3, color: '#F97316' },
-    { stage: 'Expédition', count: 5, color: '#10B981' },
+    { stage: 'ContrÃ´le', count: 3, color: '#F97316' },
+    { stage: 'ExpÃ©dition', count: 5, color: '#10B981' },
 ];
 
 const statusColor: Record<string, string> = {
     'En production': '#8B5CF6',
     'En attente': '#F59E0B',
-    'Expédié': '#3B82F6',
-    'Livré': '#10B981',
-    'Annulé': '#EF4444',
+    'ExpÃ©diÃ©': '#3B82F6',
+    'LivrÃ©': '#10B981',
+    'AnnulÃ©': '#EF4444',
 };
 
 const priorityMap: Record<string, { label: string; color: string }> = {
@@ -41,10 +41,10 @@ const NAV_ITEMS = [
     { icon: <BarChart2 size={17} />, label: 'Tableau de bord', id: 'dashboard' },
     { icon: <Package size={17} />, label: 'Commandes', id: 'orders' },
     { icon: <Factory size={17} />, label: 'Production', id: 'production' },
-    { icon: <Truck size={17} />, label: 'Expéditions', id: 'shipping' },
+    { icon: <Truck size={17} />, label: 'ExpÃ©ditions', id: 'shipping' },
     { icon: <Users size={17} />, label: 'Clients', id: 'clients' },
     { icon: <DollarSign size={17} />, label: 'Finances', id: 'finances' },
-    { icon: <Settings size={17} />, label: 'Paramètres', id: 'settings' },
+    { icon: <Settings size={17} />, label: 'ParamÃ¨tres', id: 'settings' },
 ];
 
 const ManufacturerDashboard = () => {
@@ -79,7 +79,7 @@ const ManufacturerDashboard = () => {
                 </nav>
                 <div className="mfr-sidebar-bottom">
                     <button className="mfr-nav-item mfr-logout">
-                        <LogOut size={17} /> Déconnexion
+                        <LogOut size={17} /> DÃ©connexion
                     </button>
                 </div>
             </aside>
@@ -93,7 +93,7 @@ const ManufacturerDashboard = () => {
                             <span className="sh-italic">Portail</span>
                             <span className="sh-bold">Fabricant.</span>
                         </h1>
-                        <p>Gérez vos commandes, suivez la production et expédiez avec précision.</p>
+                        <p>GÃ©rez vos commandes, suivez la production et expÃ©diez avec prÃ©cision.</p>
                     </div>
                     <div className="mfr-header-actions">
                         <button className="mfr-notif-btn">
@@ -104,7 +104,7 @@ const ManufacturerDashboard = () => {
                             <img src="https://i.pravatar.cc/40?img=52" alt="manufacturer" className="mfr-user-avatar" />
                             <div>
                                 <div className="mfr-user-name">TextilePro SAS</div>
-                                <div className="mfr-user-role">Fabricant certifié</div>
+                                <div className="mfr-user-role">Fabricant certifiÃ©</div>
                             </div>
                         </div>
                     </div>
@@ -116,8 +116,8 @@ const ManufacturerDashboard = () => {
                         {[
                             { label: 'Commandes en cours', value: '12', icon: <Clock size={20} />, color: '#F59E0B', delta: '+3 cette semaine' },
                             { label: 'En production', value: '7', icon: <Factory size={20} />, color: '#8B5CF6', delta: '2 urgentes' },
-                            { label: 'Expédiées ce mois', value: '34', icon: <Truck size={20} />, color: '#3B82F6', delta: '+12% vs mois dernier' },
-                            { label: 'Revenus ce mois', value: '€24.5k', icon: <TrendingUp size={20} />, color: '#10B981', delta: '+8.3% croissance' },
+                            { label: 'ExpÃ©diÃ©es ce mois', value: '34', icon: <Truck size={20} />, color: '#3B82F6', delta: '+12% vs mois dernier' },
+                            { label: 'Revenus ce mois', value: 'DT 24.5k', icon: <TrendingUp size={20} />, color: '#10B981', delta: '+8.3% croissance' },
                         ].map(s => (
                             <div key={s.label} className="mfr-kpi-card">
                                 <div className="mfr-kpi-icon" style={{ color: s.color, background: s.color + '18' }}>{s.icon}</div>
@@ -152,16 +152,16 @@ const ManufacturerDashboard = () => {
                     {/* Alerts */}
                     <section className="mfr-section">
                         <div className="mfr-section-header">
-                            <h2><AlertTriangle size={17} /> Alertes &amp; Priorités</h2>
+                            <h2><AlertTriangle size={17} /> Alertes &amp; PrioritÃ©s</h2>
                         </div>
                         <div className="mfr-alerts">
                             {[
-                                { type: 'urgent', msg: '2 commandes urgentes dépassent le délai estimé', color: '#EF4444' },
-                                { type: 'info', msg: 'Stock de matière "Nylon Ripstop" bientôt épuisé (12 m restants)', color: '#F59E0B' },
-                                { type: 'success', msg: 'Commande #CL-2891 expédiée avec succès ce matin', color: '#10B981' },
+                                { type: 'urgent', msg: '2 commandes urgentes dÃ©passent le dÃ©lai estimÃ©', color: '#EF4444' },
+                                { type: 'info', msg: 'Stock de matiÃ¨re "Nylon Ripstop" bientÃ´t Ã©puisÃ© (12 m restants)', color: '#F59E0B' },
+                                { type: 'success', msg: 'Commande #CL-2891 expÃ©diÃ©e avec succÃ¨s ce matin', color: '#10B981' },
                             ].map((a, i) => (
                                 <div key={i} className="mfr-alert-item" style={{ borderLeftColor: a.color }}>
-                                    <span style={{ color: a.color }}>{a.type === 'urgent' ? '🔴' : a.type === 'info' ? '🟡' : '🟢'}</span>
+                                    <span style={{ color: a.color }}>{a.type === 'urgent' ? 'ðŸ”´' : a.type === 'info' ? 'ðŸŸ¡' : 'ðŸŸ¢'}</span>
                                     <span>{a.msg}</span>
                                 </div>
                             ))}
@@ -169,7 +169,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 </>)}
 
-                {/* �dt�dt ORDERS �dt�dt */}
+                {/* â”dtâ”dt ORDERS â”dtâ”dt */}
                 {activeNav === 'orders' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -182,7 +182,7 @@ const ManufacturerDashboard = () => {
                                 <div className="mfr-filter-wrap">
                                     <Filter size={14} />
                                     <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)} className="mfr-filter-select">
-                                        {['Tous', 'En attente', 'En production', 'Expédié', 'Livré'].map(s => <option key={s}>{s}</option>)}
+                                        {['Tous', 'En attente', 'En production', 'ExpÃ©diÃ©', 'LivrÃ©'].map(s => <option key={s}>{s}</option>)}
                                     </select>
                                     <ChevronDown size={14} />
                                 </div>
@@ -190,7 +190,7 @@ const ManufacturerDashboard = () => {
                         </div>
                         <div className="mfr-table-wrap">
                             <table className="mfr-table">
-                                <thead><tr><th>Commande</th><th>Client</th><th>Produit</th><th>Qté</th><th>Matière</th><th>Date</th><th>Montant</th><th>Priorité</th><th>Statut</th><th></th></tr></thead>
+                                <thead><tr><th>Commande</th><th>Client</th><th>Produit</th><th>QtÃ©</th><th>MatiÃ¨re</th><th>Date</th><th>Montant</th><th>PrioritÃ©</th><th>Statut</th><th></th></tr></thead>
                                 <tbody>
                                     {filtered.map(o => (
                                         <tr key={o.id}>
@@ -208,12 +208,12 @@ const ManufacturerDashboard = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            {filtered.length === 0 && <div className="mfr-empty">Aucune commande trouvée.</div>}
+                            {filtered.length === 0 && <div className="mfr-empty">Aucune commande trouvÃ©e.</div>}
                         </div>
                     </section>
                 )}
 
-                {/* �dt�dt PRODUCTION �dt�dt */}
+                {/* â”dtâ”dt PRODUCTION â”dtâ”dt */}
                 {activeNav === 'production' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -233,7 +233,7 @@ const ManufacturerDashboard = () => {
                         </div>
                         <div className="mfr-table-wrap">
                             <table className="mfr-table">
-                                <thead><tr><th>Commande</th><th>Produit</th><th>Client</th><th>Matière</th><th>Qté</th><th>Statut</th><th>Actions</th></tr></thead>
+                                <thead><tr><th>Commande</th><th>Produit</th><th>Client</th><th>MatiÃ¨re</th><th>QtÃ©</th><th>Statut</th><th>Actions</th></tr></thead>
                                 <tbody>
                                     {ORDERS.filter(o => ['En production', 'En attente'].includes(o.status)).map(o => (
                                         <tr key={o.id}>
@@ -252,17 +252,17 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* �dt�dt SHIPPING �dt�dt */}
+                {/* â”dtâ”dt SHIPPING â”dtâ”dt */}
                 {activeNav === 'shipping' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
-                            <h2><Truck size={17} /> Expéditions</h2>
+                            <h2><Truck size={17} /> ExpÃ©ditions</h2>
                         </div>
                         <div className="mfr-table-wrap">
                             <table className="mfr-table">
                                 <thead><tr><th>Commande</th><th>Client</th><th>Produit</th><th>Date</th><th>Montant</th><th>Statut</th></tr></thead>
                                 <tbody>
-                                    {ORDERS.filter(o => ['Expédié', 'Livré'].includes(o.status)).map(o => (
+                                    {ORDERS.filter(o => ['ExpÃ©diÃ©', 'LivrÃ©'].includes(o.status)).map(o => (
                                         <tr key={o.id}>
                                             <td className="mfr-order-id">{o.id}</td>
                                             <td className="mfr-client">{o.client}</td>
@@ -278,7 +278,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* �dt�dt CLIENTS �dt�dt */}
+                {/* â”dtâ”dt CLIENTS â”dtâ”dt */}
                 {activeNav === 'clients' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -286,7 +286,7 @@ const ManufacturerDashboard = () => {
                         </div>
                         <div className="mfr-table-wrap">
                             <table className="mfr-table">
-                                <thead><tr><th>Client</th><th>Commandes</th><th>Dernier achat</th><th>Total dépensé</th><th>Statut</th></tr></thead>
+                                <thead><tr><th>Client</th><th>Commandes</th><th>Dernier achat</th><th>Total dÃ©pensÃ©</th><th>Statut</th></tr></thead>
                                 <tbody>
                                     {[...new Map(ORDERS.map(o => [o.client, o])).values()].map(o => (
                                         <tr key={o.client}>
@@ -303,7 +303,7 @@ const ManufacturerDashboard = () => {
                     </section>
                 )}
 
-                {/* �dt�dt FINANCES �dt�dt */}
+                {/* â”dtâ”dt FINANCES â”dtâ”dt */}
                 {activeNav === 'finances' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
@@ -311,9 +311,9 @@ const ManufacturerDashboard = () => {
                         </div>
                         <div className="mfr-kpi-grid">
                             {[
-                                { label: 'Revenus ce mois', value: '€24 500', color: '#10B981', icon: <TrendingUp size={20} />, delta: '+8.3%' },
-                                { label: 'Revenus totaux', value: '€187 240', color: '#2B3580', icon: <DollarSign size={20} />, delta: 'Depuis lancement' },
-                                { label: 'Commandes facturées', value: '145', color: '#3B82F6', icon: <Package size={20} />, delta: 'Ce trimestre' },
+                                { label: 'Revenus ce mois', value: 'DT 24 500', color: '#10B981', icon: <TrendingUp size={20} />, delta: '+8.3%' },
+                                { label: 'Revenus totaux', value: 'DT 187 240', color: '#2B3580', icon: <DollarSign size={20} />, delta: 'Depuis lancement' },
+                                { label: 'Commandes facturÃ©es', value: '145', color: '#3B82F6', icon: <Package size={20} />, delta: 'Ce trimestre' },
                                 { label: 'Marge moyenne', value: '34%', color: '#8B5CF6', icon: <BarChart2 size={20} />, delta: '+2% vs T3' },
                             ].map(s => (
                                 <div key={s.label} className="mfr-kpi-card">
@@ -325,27 +325,27 @@ const ManufacturerDashboard = () => {
                             ))}
                         </div>
                         <div className="mfr-alert-item" style={{ marginTop: '1.5rem', borderLeftColor: '#10B981' }}>
-                            <span style={{ color: '#10B981' }}>🟢</span>
-                            <span>Paiement reçu pour commande #CL-2810 �dt� €3 160</span>
+                            <span style={{ color: '#10B981' }}>ðŸŸ¢</span>
+                            <span>Paiement reÃ§u pour commande #CL-2810 âdt” DT 3 160</span>
                         </div>
                         <div className="mfr-alert-item" style={{ borderLeftColor: '#F59E0B' }}>
-                            <span style={{ color: '#F59E0B' }}>🟡</span>
-                            <span>Facture #CL-2989 en attente de règlement �dt� €2 970</span>
+                            <span style={{ color: '#F59E0B' }}>ðŸŸ¡</span>
+                            <span>Facture #CL-2989 en attente de rÃ¨glement âdt” DT 2 970</span>
                         </div>
                     </section>
                 )}
 
-                {/* �dt�dt SETTINGS �dt�dt */}
+                {/* â”dtâ”dt SETTINGS â”dtâ”dt */}
                 {activeNav === 'settings' && (
                     <section className="mfr-section">
                         <div className="mfr-section-header">
-                            <h2><Settings size={17} /> Paramètres du compte</h2>
+                            <h2><Settings size={17} /> ParamÃ¨tres du compte</h2>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: 560 }}>
                             {[
                                 { label: "Nom de l\u2019entreprise", value: 'TextilePro SAS', type: 'text' },
                                 { label: 'Email de contact', value: 'contact@textilepro.fr', type: 'email' },
-                                { label: 'Téléphone', value: '+33 1 44 55 66 77', type: 'tel' },
+                                { label: 'TÃ©lÃ©phone', value: '+33 1 44 55 66 77', type: 'tel' },
                                 { label: 'Ville', value: 'Lyon, France', type: 'text' },
                             ].map(f => (
                                 <div key={f.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
